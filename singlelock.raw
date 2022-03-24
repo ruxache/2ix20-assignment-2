@@ -1,0 +1,30 @@
+pan:1: assertion violated  !(((doors_status.lower==1)&&(slide_status.higher==1))) (at depth 61)
+pan: wrote singlelock.pml.trail
+
+(Spin Version 6.4.9 -- 17 December 2018)
+Warning: Search not completed
+
+Full statespace search for:
+	never claim         	- (none specified)
+	assertion violations	+
+	cycle checks       	- (disabled by -DSAFETY)
+	invalid end states	+
+
+State-vector 124 byte, depth reached 201, errors: 1
+      160 states, stored
+       64 states, matched
+      224 transitions (= stored+matched)
+       44 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.022	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.258	actual memory usage for states
+  128.000	memory used for hash table (-w24)
+   45.777	memory used for DFS stack (-m1000000)
+  173.972	total actual memory usage
+
+
+
+pan: elapsed time 0 seconds
+null
