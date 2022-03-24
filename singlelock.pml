@@ -252,7 +252,59 @@ proctype main_control() {
 			change_doors_pos!high; doors_pos_changed?true;
 		:: doors_status.higher == open -> skip;
 		fi;
-		observed_high[0]?true;
+		observed_high[0]?true
+
+	:: lock_is_occupied ->
+
+		// LOWER PART
+		if 
+		:: doors_status.lower == open ->
+			if
+			:: slide_status.lower == open ->
+				change_slide_pos!low;
+				slide_pos_changed?true;
+			:: slide_status.lower == closed -> skip;
+			fi
+
+		change_doors_pos!low;
+		doors_pos_changed?true;
+
+		:: doors_status.lower == closed	->
+			if
+			:: slide_status.lower == open ->
+				change_slide_pos!low;
+				slide_pos_changed?true;
+			:: slide_status.lower == closed -> skip;
+			fi
+			skip;
+		fi;
+
+		// HIGHER PART
+		if 
+		:: doors_status.higher == open ->
+			if
+			:: slide_status.higher == open ->
+				change_slide_pos!high;
+				slide_pos_changed?true;
+			:: slide_status.higher == closed -> skip;
+			fi
+
+		change_doors_pos!high;
+		doors_pos_changed?true;
+
+		:: doors_status.higher == closed	->
+			if
+			:: slide_status.higher == open ->
+				change_slide_pos!high;
+				slide_pos_changed?true;
+			:: slide_status.higher == closed -> skip;
+			fi
+			skip;
+		fi;
+
+	:: !lock_is_occupied -> skip
+	
+	od;
 }
 
 proctype monitor() {
