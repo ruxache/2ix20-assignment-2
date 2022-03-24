@@ -19,6 +19,10 @@
 // Formula p1 holds if the first ship can always eventually enter the lock when going up.
 //ltl p1 { []<> (ship_status[0] == go_up_in_lock) } /*  */
 
+ltl d1 { [] ((request_low!true && ship_status[0]  == go_up) ->  <> (ship_status[0] == go_up_in_lock)) }
+
+ltl d2 { [] ((request_high!true && ship_status[0]  == go_down) -> <> ( ship_status[0] == go_down_in_lock)) }
+
 // Type for direction of ship.
 mtype:direction = { go_down, go_down_in_lock, go_up, go_up_in_lock, goal_reached };
 
@@ -254,6 +258,11 @@ proctype main_control() {
 proctype monitor() {
 	// an example assertion.
 	assert(0 <= ship_pos[0] && ship_pos[0] <= N);
+	assert(!(doors_status.lower == open  && doors_status.higher == open)) // a
+	assert(!(doors_status.lower == open && slide_status.higher == open)) // b1
+	assert(!(doors_status.higher == open && slide_status.lower == open)) // b2
+	assert(!(doors_status.lower == open && lock_water_level != low_level)) //c1
+	assert(!(doors_status.higher == open && lock_water_level != high_level)) //c2
 }
 
 // Initial process that instantiates all other processes and creates
