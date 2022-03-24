@@ -226,20 +226,29 @@ proctype ship(byte shipid) {
 proctype main_control() {
 	do
 	:: request_low?true ->
-		if
+		if	
 		:: doors_status.lower == closed ->
+			if
+			:: slide_status.lower == closed ->
+			change_slide_pos!low; slide_pos_changed?true;
+			:: slide_status.lower == open -> skip
+			fi
 			change_doors_pos!low; doors_pos_changed?true;
 		:: doors_status.lower == open -> skip;
 		fi;
-		observed_low[0]?true;
+		observed_low[0]?true 
 	:: request_high?true ->
 		if
 		:: doors_status.higher == closed ->
+			if
+			:: slide_status.higher == closed ->
+			change_slide_pos!high; slide_pos_changed?true;
+			:: slide_status.higher == open -> skip
+			fi
 			change_doors_pos!high; doors_pos_changed?true;
 		:: doors_status.higher == open -> skip;
 		fi;
 		observed_high[0]?true;
-	od;
 }
 
 proctype monitor() {
