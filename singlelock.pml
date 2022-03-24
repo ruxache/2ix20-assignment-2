@@ -18,8 +18,8 @@
 // LTL formulas to be verified
 // Formula p1 holds if the first ship can always eventually enter the lock when going up.
 //ltl p1 { []<> (ship_status[0] == go_up_in_lock) } /*  */
-//ltl d1 { [] ((ship_status[0]  == go_up) ->  <> (ship_status[0] == go_up_in_lock)) }
-//ltl d2 { [] ((ship_status[0]  == go_down) -> <> ( ship_status[0] == go_down_in_lock)) }
+ltl d1 { [] ((ship_status[0]  == go_up) ->  <> (ship_status[0] == go_up_in_lock)) }
+ltl d2 { [] ((ship_status[0]  == go_down) -> <> ( ship_status[0] == go_down_in_lock)) }
 
 // Type for direction of ship.
 mtype:direction = { go_down, go_down_in_lock, go_up, go_up_in_lock, goal_reached };
@@ -229,20 +229,21 @@ proctype main_control() {
 	do
 	:: request_low?true ->
 		//(b1) When the lower pair of doors is open, the higher slide is closed.
-		if
-		:: slide_status.higher == open ->
-			change_slide_pos!high; slide_pos_changed?true;
-		:: slide_status.higher == closed -> skip;
-		fi;
-
-		if
-		:: doors_status.higher == open ->
-			change_doors_pos!high; doors_pos_changed?true;
-		:: doors_status.higher == closed -> skip;
-		fi;
 
 		if	
 		:: doors_status.lower == closed ->
+			if
+			:: slide_status.higher == open ->
+				change_slide_pos!high; slide_pos_changed?true;
+			:: slide_status.higher == closed -> skip;
+			fi;
+
+			if
+			:: doors_status.higher == open ->
+				change_doors_pos!high; doors_pos_changed?true;
+			:: doors_status.higher == closed -> skip;
+			fi;
+
 			if
 			:: slide_status.lower == closed ->
 			change_slide_pos!low; slide_pos_changed?true;
@@ -256,22 +257,22 @@ proctype main_control() {
 	:: request_high?true ->
 
 		if
-		:: slide_status.lower == open ->
-			change_slide_pos!high; slide_pos_changed?true;
-		:: slide_status.lower == closed -> skip;
-		fi;
-
-		if
-		:: doors_status.lower == open ->
-			change_doors_pos!low; doors_pos_changed?true;
-		:: doors_status.lower == closed -> skip;
-		fi;
-
-		if
 		:: doors_status.higher == closed ->
 			if
+			:: slide_status.lower == open ->
+				change_slide_pos!low; slide_pos_changed?true;
+			:: slide_status.lower == closed -> skip;
+			fi;
+
+			if
+			:: doors_status.lower == open ->
+				change_doors_pos!low; doors_pos_changed?true;
+			:: doors_status.lower == closed -> skip;
+			fi;
+
+			if
 			:: slide_status.higher == closed ->
-			change_slide_pos!high; slide_pos_changed?true;
+				change_slide_pos!high; slide_pos_changed?true;
 			:: slide_status.higher == open -> skip
 			fi
 			change_doors_pos!high; doors_pos_changed?true;
@@ -344,19 +345,19 @@ proctype monitor() {
 	//assert(0 <= ship_pos[0] && ship_pos[0] <= N);
 
 	// (a) The lower pair of doors and the higher pair of doors are never simultaneously open.
-	//assert(!(doors_status.lower == open  && doors_status.higher == open)) // a :(
+	assert(!(doors_status.lower == open  && doors_status.higher == open)) // a :(
 
 	// (b1) When the lower pair of doors is open, the higher slide is closed.
 	assert(!(doors_status.lower == open && slide_status.higher == open)) // b1 :(
 	
 	// (b2) When the higher pair of doors is open, the lower slide is closed.
-	//assert(!(doors_status.higher == open && slide_status.lower == open)) // b2 :(
+	assert(!(doors_status.higher == open && slide_status.lower == open)) // b2 :(
 
 	// (c1) The lower pair of doors is only open when the water level in the lock is low.
-	//assert(!(doors_status.lower == open && lock_water_level != low_level)) //c1 :)!!
+	assert(!(doors_status.lower == open && lock_water_level != low_level)) //c1 :)!!
 
 	// (c2) The higher pair of doors is only open when the water level in the lock is high
-	//assert(!(doors_status.higher == open && lock_water_level != high_level)) //c2 :(
+	assert(!(doors_status.higher == open && lock_water_level != high_level)) //c2 :(
 
 }
 

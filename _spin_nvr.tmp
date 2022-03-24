@@ -1,3 +1,14 @@
+never d1 {    /* !([] ((! ((ship_status[0]==3))) || (<> ((ship_status[0]==2))))) */
+T0_init:
+	do
+	:: (! ((! ((ship_status[0]==3)))) && ! (((ship_status[0]==2)))) -> goto accept_S4
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! (((ship_status[0]==2)))) -> goto accept_S4
+	od;
+}
 never d2 {    /* !([] ((! ((ship_status[0]==5))) || (<> ((ship_status[0]==4))))) */
 T0_init:
 	do
