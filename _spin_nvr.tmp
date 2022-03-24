@@ -20,3 +20,43 @@ accept_S4:
 	:: (! (((ship_status[0]==4)))) -> goto accept_S4
 	od;
 }
+never reqlow {    /* !([] (<> (low_req))) */
+T0_init:
+	do
+	:: (! ((low_req))) -> goto accept_S4
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! ((low_req))) -> goto accept_S4
+	od;
+}
+never reqhigh {    /* !([] (<> (high_req))) */
+T0_init:
+	do
+	:: (! ((high_req))) -> goto accept_S4
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! ((high_req))) -> goto accept_S4
+	od;
+}
+never waterlow {    /* !((333==2)) */
+accept_init:
+T0_init:
+	do
+	:: atomic { (! (((333==2)))) -> assert(!(! (((333==2))))) }
+	od;
+accept_all:
+	skip
+}
+never waterhigh {    /* !((333==1)) */
+accept_init:
+T0_init:
+	do
+	:: atomic { (! (((333==1)))) -> assert(!(! (((333==1))))) }
+	od;
+accept_all:
+	skip
+}

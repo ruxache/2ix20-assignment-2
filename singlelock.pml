@@ -9,9 +9,9 @@
 */
 
 // The number of locks.
-#define N	1
+#define N	3
 // The number of ships.
-#define M	1
+#define M	2
 // The maximum number of ships immediately at either side of a lock.
 #define MAX 2
 
@@ -20,6 +20,12 @@
 //ltl p1 { []<> (ship_status[0] == go_up_in_lock) } /*  */
 ltl d1 { [] ((ship_status[0]  == go_up) ->  <> (ship_status[0] == go_up_in_lock)) }
 ltl d2 { [] ((ship_status[0]  == go_down) -> <> ( ship_status[0] == go_down_in_lock)) }
+ltl reqlow {[]<> (low_req)}
+ltl reqhigh {[]<> (high_req)}
+ltl waterlow{[]<> lock_water_level == low}
+ltl waterhigh{[]<> lock_water_level == high}
+
+bool low_req, high_req;
 
 // Type for direction of ship.
 mtype:direction = { go_down, go_down_in_lock, go_up, go_up_in_lock, goal_reached };
@@ -230,6 +236,8 @@ proctype main_control() {
 	:: request_low?true ->
 		//(b1) When the lower pair of doors is open, the higher slide is closed.
 
+		low_req = true;
+
 		if	
 		:: doors_status.lower == closed ->
 			if
@@ -256,6 +264,8 @@ proctype main_control() {
 
 	:: request_high?true ->
 
+		high_req = true;
+
 		if
 		:: doors_status.higher == closed ->
 			if
@@ -281,6 +291,7 @@ proctype main_control() {
 		observed_high[0]?true;
 
 	:: request_low?false ->
+
 		if
 		:: lock_is_occupied ->
 
