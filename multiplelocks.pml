@@ -9,9 +9,9 @@
 */
 
 // The number of locks.
-#define N	1
+#define N	3
 // The number of ships.
-#define M	1
+#define M	2
 // The maximum number of ships immediately at either side of a lock.
 #define MAX 2
 
@@ -19,18 +19,11 @@
 // Formula p1 holds if the first ship can always eventually enter the lock when going up.
 //ltl p1 { []<> (ship_status[0] == go_up_in_lock) } /*  */
 
-// (d1) Always if a ship requests the lower pair of doors to open and its status is go_up, 
-// the ship will eventually be inside the lock.
-ltl d1 { [] ((ship_status[0]  == go_up) ->  <> (ship_status[0] == go_up_in_lock)) }
+// (f1) Always eventually a request is made to open the higher doors of lock N − 1.
+//ltl f1 {[]<> (high_req[N-1])}
 
-// (d2) Always if a ship requests the higher pair of doors to open 
-// and its status is go_down, the ship will eventually be inside the lock.
-ltl d2 { [] ((ship_status[0]  == go_down) -> <> ( ship_status[0] == go_down_in_lock)) }
-
-ltl reqlow {[]<> (low_req)}
-ltl reqhigh {[]<> (high_req)}
-ltl waterlow{[]<> lock_water_level == low}
-ltl waterhigh{[]<> lock_water_level == high}
+// (f2) Always eventually a request is made to open the lower doors of lock 0.
+//ltl reqlow {[]<> (low_req[0])}
 
 bool low_req, high_req;
 
@@ -361,6 +354,9 @@ proctype main_control() {
 proctype monitor() {
 	// an example assertion.
 	//assert(0 <= ship_pos[0] && ship_pos[0] <= N);
+
+    //(e1) When a request is made to open the lower doors of lock i, eventually the lower doors of lock i are open.
+    //(e2) When a request is made to open the higher doors of lock i, eventually the higher doors of lock i are open.
 
 	// (a) The lower pair of doors and the higher pair of doors are never simultaneously open.
 	assert(!(doors_status.lower == open  && doors_status.higher == open)) // a :(
