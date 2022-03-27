@@ -135,6 +135,7 @@ proctype ship(byte shipid) {
 		:: doors_status[lockid].higher == closed ->
 			request_high[lockid]!true;
 			requested_lock = lockid;
+			high_req[lockid] = true;
 			atomic { doors_status[lockid].higher == open ->
 				if
 				:: !lock_is_occupied[lockid] ->
@@ -158,6 +159,7 @@ proctype ship(byte shipid) {
 		:: doors_status[lockid].lower == closed ->
 			request_low[lockid]!true;
 			requested_lock = lockid;
+			low_req[lockid] = true;
 			atomic { doors_status[lockid].lower == open ->
 				if
 				:: (nr_of_ships_at_pos[ship_pos[shipid]-1] < MAX
@@ -187,6 +189,7 @@ proctype ship(byte shipid) {
 		:: doors_status[lockid].lower == closed ->
 			request_low[lockid]!true;
 			requested_lock = lockid;
+			low_req[lockid] = true;
 			atomic { doors_status[lockid].lower == open ->
 				if
 				:: !lock_is_occupied[lockid] ->
@@ -210,6 +213,7 @@ proctype ship(byte shipid) {
 		:: doors_status[lockid].higher == closed ->
 			request_high[lockid]!true;
 			requested_lock = lockid;
+			high_req[lockid] = true;
 			atomic { doors_status[lockid].higher == open ->
 				if
 				:: (nr_of_ships_at_pos[ship_pos[shipid]+1] < MAX
@@ -247,8 +251,6 @@ proctype main_control() {
 	:: request_low[lockid]?true ->
 		//(b1) When the lower pair of doors is open, the higher slide is closed.
 
-		low_req[lockid] = true;
-
 		if	
 		:: doors_status[lockid].lower == closed ->
 			if
@@ -274,8 +276,6 @@ proctype main_control() {
 		observed_low[0]?true;
 
 	:: request_high[lockid]?true ->
-		
-		high_req[lockid] = true;
 
 		if
 		:: doors_status[lockid].higher == closed ->
@@ -420,14 +420,14 @@ init {
 			ship_pos[proc] = 0;
 			run ship(proc); 
 			proc++;
-		:: proc % 2 == 0 && proc != 0 && proc != M - 1 ->
+		:: proc % 2 == 0 && proc > 0 && proc < M - 1 ->
 			ship_status[proc] = go_up; 
-			ship_pos[proc] = 0;
+			ship_pos[proc] = proc;
 			run ship(proc); 
 			proc++;
-		:: proc % 2 == 1 && proc != 0 && proc != M - 1 ->
+		:: proc % 2 == 1 && proc > 0 && proc < M - 1 ->
 			ship_status[proc] = go_down; 
-			ship_pos[proc] = N;
+			ship_pos[proc] = proc;
 			run ship(proc); 
 			proc++;
 		:: proc == M - 1 -> 

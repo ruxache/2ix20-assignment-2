@@ -1,11 +1,11 @@
-never d2 {    /* !([] ((! (((ship_status[0]==5)) && (high_req))) || (<> ((ship_status[0]==4))))) */
+never f1 {    /* !([] (<> (high_req[notlast]))) */
 T0_init:
 	do
-	:: (! ((! (((ship_status[0]==5)) && (high_req)))) && ! (((ship_status[0]==4)))) -> goto accept_S4
+	:: (! ((high_req[notlast]))) -> goto accept_S4
 	:: (1) -> goto T0_init
 	od;
 accept_S4:
 	do
-	:: (! (((ship_status[0]==4)))) -> goto accept_S4
+	:: (! ((high_req[notlast]))) -> goto accept_S4
 	od;
 }
