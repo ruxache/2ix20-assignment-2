@@ -21,11 +21,11 @@
 
 // (d1) Always if a ship requests the lower pair of doors to open and its status is go_up, 
 // the ship will eventually be inside the lock.
-ltl d1 { [] ((ship_status[0]  == go_up) ->  <> (ship_status[0] == go_up_in_lock)) }
+ltl d1 { [] ((ship_status[0]  == go_up && low_req) ->  <> (ship_status[0] == go_up_in_lock)) }
 
 // (d2) Always if a ship requests the higher pair of doors to open 
 // and its status is go_down, the ship will eventually be inside the lock.
-ltl d2 { [] ((ship_status[0]  == go_down) -> <> ( ship_status[0] == go_down_in_lock)) }
+ltl d2 { [] ((ship_status[0]  == go_down && high_req) -> <> ( ship_status[0] == go_down_in_lock)) }
 
 ltl reqlow {[]<> (low_req)}
 ltl reqhigh {[]<> (high_req)}
@@ -406,9 +406,16 @@ init {
 		// are initialised. Expand this when more ships should be added.
 		proc = 0;
 		do
-		:: proc == 0 -> ship_status[proc] = go_up; ship_pos[proc] = 0;
-			run ship(proc); proc++;
-		:: proc > 0 && proc < M -> proc++;
+		:: proc < M / 2 -> 
+			ship_status[proc] = go_up; 
+			ship_pos[proc] = 0;
+			run ship(proc); 
+			proc++;
+		:: proc >= M / 2 -> 
+			ship_status[proc] = go_down; 
+			ship_pos[proc] = N;
+			run ship(proc); 
+			proc++;
 		:: proc == M -> break;
 		od;
 		// Do not change the code below! It derives the number of ships per
