@@ -20,29 +20,35 @@
 		_m = 3; goto P999;
 
 		 /* PROC :init: */
-	case 3: // STATE 1 - singlelock.pml:381 - [(run main_control())] (0:0:0 - 1)
+	case 3: // STATE 1 - singlelock.pml:387 - [(run monitor())] (0:0:0 - 1)
 		IfNotBlocked
-		reached[3][1] = 1;
+		reached[4][1] = 1;
+		if (!(addproc(II, 1, 3, 0)))
+			continue;
+		_m = 3; goto P999; /* 0 */
+	case 4: // STATE 2 - singlelock.pml:388 - [(run main_control())] (0:0:0 - 1)
+		IfNotBlocked
+		reached[4][2] = 1;
 		if (!(addproc(II, 1, 2, 0)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 4: // STATE 2 - singlelock.pml:385 - [proc = 0] (0:0:1 - 1)
+	case 5: // STATE 3 - singlelock.pml:392 - [proc = 0] (0:0:1 - 1)
 		IfNotBlocked
-		reached[3][2] = 1;
-		(trpt+1)->bup.oval = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = 0;
+		reached[4][3] = 1;
+		(trpt+1)->bup.oval = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = 0;
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 5: // STATE 3 - singlelock.pml:387 - [((proc<3))] (10:0:6 - 1)
+	case 6: // STATE 4 - singlelock.pml:394 - [((proc<1))] (11:0:6 - 1)
 		IfNotBlocked
-		reached[3][3] = 1;
-		if (!((((int)((P3 *)_this)->proc)<3)))
+		reached[4][4] = 1;
+		if (!((((int)((P4 *)_this)->proc)<1)))
 			continue;
-		/* merge: doors_status.lower = 2(10, 4, 10) */
-		reached[3][4] = 1;
+		/* merge: doors_status.lower = 2(11, 5, 11) */
+		reached[4][5] = 1;
 		(trpt+1)->bup.ovals = grab_ints(6);
 		(trpt+1)->bup.ovals[0] = now.doors_status.lower;
 		now.doors_status.lower = 2;
@@ -50,40 +56,40 @@
 		logval("doors_status.lower", now.doors_status.lower);
 #endif
 		;
-		/* merge: doors_status.higher = 2(10, 5, 10) */
-		reached[3][5] = 1;
+		/* merge: doors_status.higher = 2(11, 6, 11) */
+		reached[4][6] = 1;
 		(trpt+1)->bup.ovals[1] = now.doors_status.higher;
 		now.doors_status.higher = 2;
 #ifdef VAR_RANGES
 		logval("doors_status.higher", now.doors_status.higher);
 #endif
 		;
-		/* merge: slide_status.lower = 2(10, 6, 10) */
-		reached[3][6] = 1;
+		/* merge: slide_status.lower = 2(11, 7, 11) */
+		reached[4][7] = 1;
 		(trpt+1)->bup.ovals[2] = now.slide_status.lower;
 		now.slide_status.lower = 2;
 #ifdef VAR_RANGES
 		logval("slide_status.lower", now.slide_status.lower);
 #endif
 		;
-		/* merge: slide_status.higher = 2(10, 7, 10) */
-		reached[3][7] = 1;
+		/* merge: slide_status.higher = 2(11, 8, 11) */
+		reached[4][8] = 1;
 		(trpt+1)->bup.ovals[3] = now.slide_status.higher;
 		now.slide_status.higher = 2;
 #ifdef VAR_RANGES
 		logval("slide_status.higher", now.slide_status.higher);
 #endif
 		;
-		/* merge: lock_water_level = 1(10, 8, 10) */
-		reached[3][8] = 1;
+		/* merge: lock_water_level = 1(11, 9, 11) */
+		reached[4][9] = 1;
 		(trpt+1)->bup.ovals[4] = lock_water_level;
 		lock_water_level = 1;
 #ifdef VAR_RANGES
 		logval("lock_water_level", lock_water_level);
 #endif
 		;
-		/* merge: lock_is_occupied = 0(10, 9, 10) */
-		reached[3][9] = 1;
+		/* merge: lock_is_occupied = 0(11, 10, 11) */
+		reached[4][10] = 1;
 		(trpt+1)->bup.ovals[5] = ((int)now.lock_is_occupied);
 		now.lock_is_occupied = 0;
 #ifdef VAR_RANGES
@@ -91,192 +97,226 @@
 #endif
 		;
 		_m = 3; goto P999; /* 6 */
-	case 6: // STATE 10 - singlelock.pml:394 - [(run lock(proc))] (0:0:0 - 1)
+	case 7: // STATE 11 - singlelock.pml:401 - [(run lock(proc))] (0:0:0 - 1)
 		IfNotBlocked
-		reached[3][10] = 1;
-		if (!(addproc(II, 1, 0, ((int)((P3 *)_this)->proc))))
+		reached[4][11] = 1;
+		if (!(addproc(II, 1, 0, ((int)((P4 *)_this)->proc))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 7: // STATE 11 - singlelock.pml:395 - [proc = (proc+1)] (0:0:1 - 1)
+	case 8: // STATE 12 - singlelock.pml:402 - [proc = (proc+1)] (0:0:1 - 1)
 		IfNotBlocked
-		reached[3][11] = 1;
-		(trpt+1)->bup.oval = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = (((int)((P3 *)_this)->proc)+1);
+		reached[4][12] = 1;
+		(trpt+1)->bup.oval = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = (((int)((P4 *)_this)->proc)+1);
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 8: // STATE 12 - singlelock.pml:396 - [((proc==3))] (27:0:2 - 1)
+	case 9: // STATE 13 - singlelock.pml:403 - [((proc==1))] (31:0:2 - 1)
 		IfNotBlocked
-		reached[3][12] = 1;
-		if (!((((int)((P3 *)_this)->proc)==3)))
+		reached[4][13] = 1;
+		if (!((((int)((P4 *)_this)->proc)==1)))
 			continue;
 		if (TstOnly) return 1; /* TT */
 		/* dead 1: proc */  (trpt+1)->bup.ovals = grab_ints(2);
-		(trpt+1)->bup.ovals[0] = ((P3 *)_this)->proc;
+		(trpt+1)->bup.ovals[0] = ((P4 *)_this)->proc;
 #ifdef HAS_CODE
 		if (!readtrail)
 #endif
-			((P3 *)_this)->proc = 0;
-		/* merge: goto :b7(27, 13, 27) */
-		reached[3][13] = 1;
+			((P4 *)_this)->proc = 0;
+		/* merge: goto :b7(31, 14, 31) */
+		reached[4][14] = 1;
 		;
-		/* merge: proc = 0(27, 17, 27) */
-		reached[3][17] = 1;
-		(trpt+1)->bup.ovals[1] = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = 0;
+		/* merge: proc = 0(31, 18, 31) */
+		reached[4][18] = 1;
+		(trpt+1)->bup.ovals[1] = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = 0;
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
 #endif
 		;
-		/* merge: .(goto)(0, 28, 27) */
-		reached[3][28] = 1;
+		/* merge: .(goto)(0, 32, 31) */
+		reached[4][32] = 1;
 		;
 		_m = 3; goto P999; /* 3 */
-	case 9: // STATE 17 - singlelock.pml:400 - [proc = 0] (0:27:1 - 3)
+	case 10: // STATE 18 - singlelock.pml:407 - [proc = 0] (0:31:1 - 3)
 		IfNotBlocked
-		reached[3][17] = 1;
-		(trpt+1)->bup.oval = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = 0;
+		reached[4][18] = 1;
+		(trpt+1)->bup.oval = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = 0;
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
 #endif
 		;
-		/* merge: .(goto)(0, 28, 27) */
-		reached[3][28] = 1;
+		/* merge: .(goto)(0, 32, 31) */
+		reached[4][32] = 1;
 		;
 		_m = 3; goto P999; /* 1 */
-	case 10: // STATE 18 - singlelock.pml:402 - [((proc==0))] (21:0:2 - 1)
+	case 11: // STATE 19 - singlelock.pml:409 - [((proc<=(1/2)))] (22:0:2 - 1)
 		IfNotBlocked
-		reached[3][18] = 1;
-		if (!((((int)((P3 *)_this)->proc)==0)))
+		reached[4][19] = 1;
+		if (!((((int)((P4 *)_this)->proc)<=(1/2))))
 			continue;
-		/* merge: ship_status[proc] = 3(21, 19, 21) */
-		reached[3][19] = 1;
+		/* merge: ship_status[proc] = 3(22, 20, 22) */
+		reached[4][20] = 1;
 		(trpt+1)->bup.ovals = grab_ints(2);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P3 *)_this)->proc), 2) ];
-		now.ship_status[ Index(((P3 *)_this)->proc, 2) ] = 3;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P4 *)_this)->proc), 1) ];
+		now.ship_status[ Index(((P4 *)_this)->proc, 1) ] = 3;
 #ifdef VAR_RANGES
-		logval("ship_status[:init::proc]", now.ship_status[ Index(((int)((P3 *)_this)->proc), 2) ]);
+		logval("ship_status[:init::proc]", now.ship_status[ Index(((int)((P4 *)_this)->proc), 1) ]);
 #endif
 		;
-		/* merge: ship_pos[proc] = 0(21, 20, 21) */
-		reached[3][20] = 1;
-		(trpt+1)->bup.ovals[1] = ((int)now.ship_pos[ Index(((int)((P3 *)_this)->proc), 2) ]);
-		now.ship_pos[ Index(((P3 *)_this)->proc, 2) ] = 0;
+		/* merge: ship_pos[proc] = 0(22, 21, 22) */
+		reached[4][21] = 1;
+		(trpt+1)->bup.ovals[1] = ((int)now.ship_pos[ Index(((int)((P4 *)_this)->proc), 1) ]);
+		now.ship_pos[ Index(((P4 *)_this)->proc, 1) ] = 0;
 #ifdef VAR_RANGES
-		logval("ship_pos[:init::proc]", ((int)now.ship_pos[ Index(((int)((P3 *)_this)->proc), 2) ]));
+		logval("ship_pos[:init::proc]", ((int)now.ship_pos[ Index(((int)((P4 *)_this)->proc), 1) ]));
 #endif
 		;
 		_m = 3; goto P999; /* 2 */
-	case 11: // STATE 21 - singlelock.pml:403 - [(run ship(proc))] (0:0:0 - 1)
+	case 12: // STATE 22 - singlelock.pml:412 - [(run ship(proc))] (0:0:0 - 1)
 		IfNotBlocked
-		reached[3][21] = 1;
-		if (!(addproc(II, 1, 1, ((int)((P3 *)_this)->proc))))
+		reached[4][22] = 1;
+		if (!(addproc(II, 1, 1, ((int)((P4 *)_this)->proc))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 12: // STATE 22 - singlelock.pml:403 - [proc = (proc+1)] (0:0:1 - 1)
+	case 13: // STATE 23 - singlelock.pml:413 - [proc = (proc+1)] (0:0:1 - 1)
 		IfNotBlocked
-		reached[3][22] = 1;
-		(trpt+1)->bup.oval = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = (((int)((P3 *)_this)->proc)+1);
+		reached[4][23] = 1;
+		(trpt+1)->bup.oval = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = (((int)((P4 *)_this)->proc)+1);
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 13: // STATE 23 - singlelock.pml:404 - [(((proc>0)&&(proc<2)))] (27:0:1 - 1)
+	case 14: // STATE 24 - singlelock.pml:414 - [(((proc>(1/2))&&(proc<1)))] (27:0:2 - 1)
 		IfNotBlocked
-		reached[3][23] = 1;
-		if (!(((((int)((P3 *)_this)->proc)>0)&&(((int)((P3 *)_this)->proc)<2))))
+		reached[4][24] = 1;
+		if (!(((((int)((P4 *)_this)->proc)>(1/2))&&(((int)((P4 *)_this)->proc)<1))))
 			continue;
-		/* merge: proc = (proc+1)(0, 24, 27) */
-		reached[3][24] = 1;
-		(trpt+1)->bup.oval = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = (((int)((P3 *)_this)->proc)+1);
+		/* merge: ship_status[proc] = 5(27, 25, 27) */
+		reached[4][25] = 1;
+		(trpt+1)->bup.ovals = grab_ints(2);
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P4 *)_this)->proc), 1) ];
+		now.ship_status[ Index(((P4 *)_this)->proc, 1) ] = 5;
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval("ship_status[:init::proc]", now.ship_status[ Index(((int)((P4 *)_this)->proc), 1) ]);
 #endif
 		;
-		/* merge: .(goto)(0, 28, 27) */
-		reached[3][28] = 1;
+		/* merge: ship_pos[proc] = 1(27, 26, 27) */
+		reached[4][26] = 1;
+		(trpt+1)->bup.ovals[1] = ((int)now.ship_pos[ Index(((int)((P4 *)_this)->proc), 1) ]);
+		now.ship_pos[ Index(((P4 *)_this)->proc, 1) ] = 1;
+#ifdef VAR_RANGES
+		logval("ship_pos[:init::proc]", ((int)now.ship_pos[ Index(((int)((P4 *)_this)->proc), 1) ]));
+#endif
 		;
 		_m = 3; goto P999; /* 2 */
-	case 14: // STATE 25 - singlelock.pml:405 - [((proc==2))] (36:0:2 - 1)
+	case 15: // STATE 27 - singlelock.pml:417 - [(run ship(proc))] (0:0:0 - 1)
 		IfNotBlocked
-		reached[3][25] = 1;
-		if (!((((int)((P3 *)_this)->proc)==2)))
+		reached[4][27] = 1;
+		if (!(addproc(II, 1, 1, ((int)((P4 *)_this)->proc))))
+			continue;
+		_m = 3; goto P999; /* 0 */
+	case 16: // STATE 28 - singlelock.pml:418 - [proc = (proc+1)] (0:0:1 - 1)
+		IfNotBlocked
+		reached[4][28] = 1;
+		(trpt+1)->bup.oval = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = (((int)((P4 *)_this)->proc)+1);
+#ifdef VAR_RANGES
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
+#endif
+		;
+		_m = 3; goto P999; /* 0 */
+	case 17: // STATE 29 - singlelock.pml:419 - [((proc==1))] (40:0:2 - 1)
+		IfNotBlocked
+		reached[4][29] = 1;
+		if (!((((int)((P4 *)_this)->proc)==1)))
 			continue;
 		if (TstOnly) return 1; /* TT */
 		/* dead 1: proc */  (trpt+1)->bup.ovals = grab_ints(2);
-		(trpt+1)->bup.ovals[0] = ((P3 *)_this)->proc;
+		(trpt+1)->bup.ovals[0] = ((P4 *)_this)->proc;
 #ifdef HAS_CODE
 		if (!readtrail)
 #endif
-			((P3 *)_this)->proc = 0;
-		/* merge: goto :b8(36, 26, 36) */
-		reached[3][26] = 1;
+			((P4 *)_this)->proc = 0;
+		/* merge: goto :b8(40, 30, 40) */
+		reached[4][30] = 1;
 		;
-		/* merge: proc = 0(36, 30, 36) */
-		reached[3][30] = 1;
-		(trpt+1)->bup.ovals[1] = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = 0;
+		/* merge: proc = 0(40, 34, 40) */
+		reached[4][34] = 1;
+		(trpt+1)->bup.ovals[1] = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = 0;
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
 #endif
 		;
-		/* merge: .(goto)(0, 37, 36) */
-		reached[3][37] = 1;
+		/* merge: .(goto)(0, 41, 40) */
+		reached[4][41] = 1;
 		;
 		_m = 3; goto P999; /* 3 */
-	case 15: // STATE 30 - singlelock.pml:409 - [proc = 0] (0:36:1 - 3)
+	case 18: // STATE 34 - singlelock.pml:425 - [proc = 0] (0:40:1 - 3)
 		IfNotBlocked
-		reached[3][30] = 1;
-		(trpt+1)->bup.oval = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = 0;
+		reached[4][34] = 1;
+		(trpt+1)->bup.oval = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = 0;
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
 #endif
 		;
-		/* merge: .(goto)(0, 37, 36) */
-		reached[3][37] = 1;
+		/* merge: .(goto)(0, 41, 40) */
+		reached[4][41] = 1;
 		;
 		_m = 3; goto P999; /* 1 */
-	case 16: // STATE 31 - singlelock.pml:411 - [((proc<2))] (36:0:2 - 1)
+	case 19: // STATE 35 - singlelock.pml:427 - [((proc<1))] (40:0:2 - 1)
 		IfNotBlocked
-		reached[3][31] = 1;
-		if (!((((int)((P3 *)_this)->proc)<2)))
+		reached[4][35] = 1;
+		if (!((((int)((P4 *)_this)->proc)<1)))
 			continue;
-		/* merge: nr_of_ships_at_pos[ship_pos[proc]] = (nr_of_ships_at_pos[ship_pos[proc]]+1)(36, 32, 36) */
-		reached[3][32] = 1;
+		/* merge: nr_of_ships_at_pos[ship_pos[proc]] = (nr_of_ships_at_pos[ship_pos[proc]]+1)(40, 36, 40) */
+		reached[4][36] = 1;
 		(trpt+1)->bup.ovals = grab_ints(2);
-		(trpt+1)->bup.ovals[0] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P3 *)_this)->proc), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P3 *)_this)->proc, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P3 *)_this)->proc), 2) ]), 4) ])+1);
+		(trpt+1)->bup.ovals[0] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P4 *)_this)->proc), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P4 *)_this)->proc, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P4 *)_this)->proc), 1) ]), 2) ])+1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[:init::proc]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P3 *)_this)->proc), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[:init::proc]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P4 *)_this)->proc), 1) ]), 2) ]));
 #endif
 		;
-		/* merge: proc = (proc+1)(36, 33, 36) */
-		reached[3][33] = 1;
-		(trpt+1)->bup.ovals[1] = ((int)((P3 *)_this)->proc);
-		((P3 *)_this)->proc = (((int)((P3 *)_this)->proc)+1);
+		/* merge: proc = (proc+1)(40, 37, 40) */
+		reached[4][37] = 1;
+		(trpt+1)->bup.ovals[1] = ((int)((P4 *)_this)->proc);
+		((P4 *)_this)->proc = (((int)((P4 *)_this)->proc)+1);
 #ifdef VAR_RANGES
-		logval(":init::proc", ((int)((P3 *)_this)->proc));
+		logval(":init::proc", ((int)((P4 *)_this)->proc));
 #endif
 		;
-		/* merge: .(goto)(0, 37, 36) */
-		reached[3][37] = 1;
+		/* merge: .(goto)(0, 41, 40) */
+		reached[4][41] = 1;
 		;
 		_m = 3; goto P999; /* 3 */
-	case 17: // STATE 40 - singlelock.pml:415 - [-end-] (0:0:0 - 1)
+	case 20: // STATE 44 - singlelock.pml:431 - [-end-] (0:0:0 - 1)
 		IfNotBlocked
-		reached[3][40] = 1;
+		reached[4][44] = 1;
+		if (!delproc(1, II)) continue;
+		_m = 3; goto P999; /* 0 */
+
+		 /* PROC monitor */
+	case 21: // STATE 1 - singlelock.pml:369 - [assert(!(((doors_status.lower==1)&&(slide_status.higher==1))))] (0:0:0 - 1)
+		IfNotBlocked
+		reached[3][1] = 1;
+		spin_assert( !(((now.doors_status.lower==1)&&(now.slide_status.higher==1))), " !(((doors_status.lower==1)&&(slide_status.higher==1)))", II, tt, t);
+		_m = 3; goto P999; /* 0 */
+	case 22: // STATE 2 - singlelock.pml:380 - [-end-] (0:0:0 - 1)
+		IfNotBlocked
+		reached[3][2] = 1;
 		if (!delproc(1, II)) continue;
 		_m = 3; goto P999; /* 0 */
 
 		 /* PROC main_control */
-	case 18: // STATE 1 - singlelock.pml:236 - [request_low?1] (0:0:0 - 1)
+	case 23: // STATE 1 - singlelock.pml:243 - [request_low?1] (0:0:0 - 1)
 		reached[2][1] = 1;
 		if (q_zero(now.request_low))
 		{	if (boq != now.request_low) continue;
@@ -324,7 +364,7 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 19: // STATE 2 - singlelock.pml:239 - [low_req = 1] (0:0:1 - 1)
+	case 24: // STATE 2 - singlelock.pml:246 - [low_req = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[2][2] = 1;
 		(trpt+1)->bup.oval = ((int)low_req);
@@ -334,19 +374,19 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 20: // STATE 3 - singlelock.pml:242 - [((doors_status.lower==2))] (0:0:0 - 1)
+	case 25: // STATE 3 - singlelock.pml:249 - [((doors_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][3] = 1;
 		if (!((now.doors_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 21: // STATE 4 - singlelock.pml:244 - [((slide_status.higher==1))] (0:0:0 - 1)
+	case 26: // STATE 4 - singlelock.pml:251 - [((slide_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][4] = 1;
 		if (!((now.slide_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 22: // STATE 5 - singlelock.pml:245 - [change_slide_pos!1] (0:0:0 - 1)
+	case 27: // STATE 5 - singlelock.pml:252 - [change_slide_pos!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][5] = 1;
 		if (q_full(now.change_slide_pos))
@@ -361,7 +401,7 @@
 		qsend(now.change_slide_pos, 0, 1, 1);
 		if (q_zero(now.change_slide_pos)) { boq = now.change_slide_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 23: // STATE 6 - singlelock.pml:245 - [slide_pos_changed?1] (0:0:0 - 1)
+	case 28: // STATE 6 - singlelock.pml:252 - [slide_pos_changed?1] (0:0:0 - 1)
 		reached[2][6] = 1;
 		if (q_zero(now.slide_pos_changed))
 		{	if (boq != now.slide_pos_changed) continue;
@@ -409,19 +449,19 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 24: // STATE 7 - singlelock.pml:246 - [((slide_status.higher==2))] (0:0:0 - 1)
+	case 29: // STATE 7 - singlelock.pml:253 - [((slide_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][7] = 1;
 		if (!((now.slide_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 25: // STATE 11 - singlelock.pml:250 - [((doors_status.higher==1))] (0:0:0 - 1)
+	case 30: // STATE 11 - singlelock.pml:257 - [((doors_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][11] = 1;
 		if (!((now.doors_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 26: // STATE 12 - singlelock.pml:251 - [change_doors_pos!1] (0:0:0 - 1)
+	case 31: // STATE 12 - singlelock.pml:258 - [change_doors_pos!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][12] = 1;
 		if (q_full(now.change_doors_pos))
@@ -436,7 +476,7 @@
 		qsend(now.change_doors_pos, 0, 1, 1);
 		if (q_zero(now.change_doors_pos)) { boq = now.change_doors_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 27: // STATE 13 - singlelock.pml:251 - [doors_pos_changed?1] (0:0:0 - 1)
+	case 32: // STATE 13 - singlelock.pml:258 - [doors_pos_changed?1] (0:0:0 - 1)
 		reached[2][13] = 1;
 		if (q_zero(now.doors_pos_changed))
 		{	if (boq != now.doors_pos_changed) continue;
@@ -484,19 +524,19 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 28: // STATE 14 - singlelock.pml:252 - [((doors_status.higher==2))] (0:0:0 - 1)
+	case 33: // STATE 14 - singlelock.pml:259 - [((doors_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][14] = 1;
 		if (!((now.doors_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 29: // STATE 18 - singlelock.pml:256 - [((slide_status.lower==2))] (0:0:0 - 1)
+	case 34: // STATE 18 - singlelock.pml:263 - [((slide_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][18] = 1;
 		if (!((now.slide_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 30: // STATE 19 - singlelock.pml:257 - [change_slide_pos!2] (0:0:0 - 1)
+	case 35: // STATE 19 - singlelock.pml:264 - [change_slide_pos!2] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][19] = 1;
 		if (q_full(now.change_slide_pos))
@@ -511,7 +551,7 @@
 		qsend(now.change_slide_pos, 0, 2, 1);
 		if (q_zero(now.change_slide_pos)) { boq = now.change_slide_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 31: // STATE 20 - singlelock.pml:257 - [slide_pos_changed?1] (0:0:0 - 1)
+	case 36: // STATE 20 - singlelock.pml:264 - [slide_pos_changed?1] (0:0:0 - 1)
 		reached[2][20] = 1;
 		if (q_zero(now.slide_pos_changed))
 		{	if (boq != now.slide_pos_changed) continue;
@@ -559,13 +599,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 32: // STATE 21 - singlelock.pml:258 - [((slide_status.lower==1))] (0:0:0 - 1)
+	case 37: // STATE 21 - singlelock.pml:265 - [((slide_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][21] = 1;
 		if (!((now.slide_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 33: // STATE 25 - singlelock.pml:260 - [change_doors_pos!2] (0:0:0 - 3)
+	case 38: // STATE 25 - singlelock.pml:267 - [change_doors_pos!2] (0:0:0 - 3)
 		IfNotBlocked
 		reached[2][25] = 1;
 		if (q_full(now.change_doors_pos))
@@ -580,7 +620,7 @@
 		qsend(now.change_doors_pos, 0, 2, 1);
 		if (q_zero(now.change_doors_pos)) { boq = now.change_doors_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 34: // STATE 26 - singlelock.pml:260 - [doors_pos_changed?1] (0:0:0 - 1)
+	case 39: // STATE 26 - singlelock.pml:267 - [doors_pos_changed?1] (0:0:0 - 1)
 		reached[2][26] = 1;
 		if (q_zero(now.doors_pos_changed))
 		{	if (boq != now.doors_pos_changed) continue;
@@ -628,13 +668,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 35: // STATE 27 - singlelock.pml:261 - [((doors_status.lower==1))] (0:0:0 - 1)
+	case 40: // STATE 27 - singlelock.pml:268 - [((doors_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][27] = 1;
 		if (!((now.doors_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 36: // STATE 31 - singlelock.pml:263 - [observed_low[0]?1] (0:0:0 - 3)
+	case 41: // STATE 31 - singlelock.pml:270 - [observed_low[0]?1] (0:0:0 - 3)
 		reached[2][31] = 1;
 		if (q_zero(now.observed_low[0]))
 		{	if (boq != now.observed_low[0]) continue;
@@ -682,7 +722,7 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 37: // STATE 32 - singlelock.pml:265 - [request_high?1] (0:0:0 - 1)
+	case 42: // STATE 32 - singlelock.pml:272 - [request_high?1] (0:0:0 - 1)
 		reached[2][32] = 1;
 		if (q_zero(now.request_high))
 		{	if (boq != now.request_high) continue;
@@ -730,7 +770,7 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 38: // STATE 33 - singlelock.pml:267 - [high_req = 1] (0:0:1 - 1)
+	case 43: // STATE 33 - singlelock.pml:274 - [high_req = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[2][33] = 1;
 		(trpt+1)->bup.oval = ((int)high_req);
@@ -740,19 +780,19 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 39: // STATE 34 - singlelock.pml:270 - [((doors_status.higher==2))] (0:0:0 - 1)
+	case 44: // STATE 34 - singlelock.pml:277 - [((doors_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][34] = 1;
 		if (!((now.doors_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 40: // STATE 35 - singlelock.pml:272 - [((slide_status.lower==1))] (0:0:0 - 1)
+	case 45: // STATE 35 - singlelock.pml:279 - [((slide_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][35] = 1;
 		if (!((now.slide_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 41: // STATE 36 - singlelock.pml:273 - [change_slide_pos!2] (0:0:0 - 1)
+	case 46: // STATE 36 - singlelock.pml:280 - [change_slide_pos!2] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][36] = 1;
 		if (q_full(now.change_slide_pos))
@@ -767,7 +807,7 @@
 		qsend(now.change_slide_pos, 0, 2, 1);
 		if (q_zero(now.change_slide_pos)) { boq = now.change_slide_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 42: // STATE 37 - singlelock.pml:273 - [slide_pos_changed?1] (0:0:0 - 1)
+	case 47: // STATE 37 - singlelock.pml:280 - [slide_pos_changed?1] (0:0:0 - 1)
 		reached[2][37] = 1;
 		if (q_zero(now.slide_pos_changed))
 		{	if (boq != now.slide_pos_changed) continue;
@@ -815,19 +855,19 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 43: // STATE 38 - singlelock.pml:274 - [((slide_status.lower==2))] (0:0:0 - 1)
+	case 48: // STATE 38 - singlelock.pml:281 - [((slide_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][38] = 1;
 		if (!((now.slide_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 44: // STATE 42 - singlelock.pml:278 - [((doors_status.lower==1))] (0:0:0 - 1)
+	case 49: // STATE 42 - singlelock.pml:285 - [((doors_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][42] = 1;
 		if (!((now.doors_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 45: // STATE 43 - singlelock.pml:279 - [change_doors_pos!2] (0:0:0 - 1)
+	case 50: // STATE 43 - singlelock.pml:286 - [change_doors_pos!2] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][43] = 1;
 		if (q_full(now.change_doors_pos))
@@ -842,7 +882,7 @@
 		qsend(now.change_doors_pos, 0, 2, 1);
 		if (q_zero(now.change_doors_pos)) { boq = now.change_doors_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 46: // STATE 44 - singlelock.pml:279 - [doors_pos_changed?1] (0:0:0 - 1)
+	case 51: // STATE 44 - singlelock.pml:286 - [doors_pos_changed?1] (0:0:0 - 1)
 		reached[2][44] = 1;
 		if (q_zero(now.doors_pos_changed))
 		{	if (boq != now.doors_pos_changed) continue;
@@ -890,19 +930,19 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 47: // STATE 45 - singlelock.pml:280 - [((doors_status.lower==2))] (0:0:0 - 1)
+	case 52: // STATE 45 - singlelock.pml:287 - [((doors_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][45] = 1;
 		if (!((now.doors_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 48: // STATE 49 - singlelock.pml:284 - [((slide_status.higher==2))] (0:0:0 - 1)
+	case 53: // STATE 49 - singlelock.pml:291 - [((slide_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][49] = 1;
 		if (!((now.slide_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 49: // STATE 50 - singlelock.pml:285 - [change_slide_pos!1] (0:0:0 - 1)
+	case 54: // STATE 50 - singlelock.pml:292 - [change_slide_pos!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][50] = 1;
 		if (q_full(now.change_slide_pos))
@@ -917,7 +957,7 @@
 		qsend(now.change_slide_pos, 0, 1, 1);
 		if (q_zero(now.change_slide_pos)) { boq = now.change_slide_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 50: // STATE 51 - singlelock.pml:285 - [slide_pos_changed?1] (0:0:0 - 1)
+	case 55: // STATE 51 - singlelock.pml:292 - [slide_pos_changed?1] (0:0:0 - 1)
 		reached[2][51] = 1;
 		if (q_zero(now.slide_pos_changed))
 		{	if (boq != now.slide_pos_changed) continue;
@@ -965,13 +1005,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 51: // STATE 52 - singlelock.pml:286 - [((slide_status.higher==1))] (0:0:0 - 1)
+	case 56: // STATE 52 - singlelock.pml:293 - [((slide_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][52] = 1;
 		if (!((now.slide_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 52: // STATE 56 - singlelock.pml:288 - [change_doors_pos!1] (0:0:0 - 3)
+	case 57: // STATE 56 - singlelock.pml:295 - [change_doors_pos!1] (0:0:0 - 3)
 		IfNotBlocked
 		reached[2][56] = 1;
 		if (q_full(now.change_doors_pos))
@@ -986,7 +1026,7 @@
 		qsend(now.change_doors_pos, 0, 1, 1);
 		if (q_zero(now.change_doors_pos)) { boq = now.change_doors_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 53: // STATE 57 - singlelock.pml:288 - [doors_pos_changed?1] (0:0:0 - 1)
+	case 58: // STATE 57 - singlelock.pml:295 - [doors_pos_changed?1] (0:0:0 - 1)
 		reached[2][57] = 1;
 		if (q_zero(now.doors_pos_changed))
 		{	if (boq != now.doors_pos_changed) continue;
@@ -1034,13 +1074,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 54: // STATE 58 - singlelock.pml:289 - [((doors_status.higher==1))] (0:0:0 - 1)
+	case 59: // STATE 58 - singlelock.pml:296 - [((doors_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][58] = 1;
 		if (!((now.doors_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 55: // STATE 62 - singlelock.pml:291 - [observed_high[0]?1] (0:0:0 - 3)
+	case 60: // STATE 62 - singlelock.pml:298 - [observed_high[0]?1] (0:0:0 - 3)
 		reached[2][62] = 1;
 		if (q_zero(now.observed_high[0]))
 		{	if (boq != now.observed_high[0]) continue;
@@ -1088,7 +1128,7 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 56: // STATE 63 - singlelock.pml:293 - [request_low?0] (0:0:0 - 1)
+	case 61: // STATE 63 - singlelock.pml:300 - [request_low?0] (0:0:0 - 1)
 		reached[2][63] = 1;
 		if (q_zero(now.request_low))
 		{	if (boq != now.request_low) continue;
@@ -1136,25 +1176,25 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 57: // STATE 64 - singlelock.pml:296 - [(lock_is_occupied)] (0:0:0 - 1)
+	case 62: // STATE 64 - singlelock.pml:303 - [(lock_is_occupied)] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][64] = 1;
 		if (!(((int)now.lock_is_occupied)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 58: // STATE 65 - singlelock.pml:300 - [((doors_status.lower==1))] (0:0:0 - 1)
+	case 63: // STATE 65 - singlelock.pml:307 - [((doors_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][65] = 1;
 		if (!((now.doors_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 59: // STATE 66 - singlelock.pml:302 - [((slide_status.lower==1))] (0:0:0 - 1)
+	case 64: // STATE 66 - singlelock.pml:309 - [((slide_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][66] = 1;
 		if (!((now.slide_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 60: // STATE 67 - singlelock.pml:303 - [change_slide_pos!2] (0:0:0 - 1)
+	case 65: // STATE 67 - singlelock.pml:310 - [change_slide_pos!2] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][67] = 1;
 		if (q_full(now.change_slide_pos))
@@ -1169,7 +1209,7 @@
 		qsend(now.change_slide_pos, 0, 2, 1);
 		if (q_zero(now.change_slide_pos)) { boq = now.change_slide_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 61: // STATE 68 - singlelock.pml:304 - [slide_pos_changed?1] (0:0:0 - 1)
+	case 66: // STATE 68 - singlelock.pml:311 - [slide_pos_changed?1] (0:0:0 - 1)
 		reached[2][68] = 1;
 		if (q_zero(now.slide_pos_changed))
 		{	if (boq != now.slide_pos_changed) continue;
@@ -1217,13 +1257,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 62: // STATE 69 - singlelock.pml:305 - [((slide_status.lower==2))] (0:0:0 - 1)
+	case 67: // STATE 69 - singlelock.pml:312 - [((slide_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][69] = 1;
 		if (!((now.slide_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 63: // STATE 73 - singlelock.pml:308 - [change_doors_pos!2] (0:0:0 - 3)
+	case 68: // STATE 73 - singlelock.pml:315 - [change_doors_pos!2] (0:0:0 - 3)
 		IfNotBlocked
 		reached[2][73] = 1;
 		if (q_full(now.change_doors_pos))
@@ -1238,7 +1278,7 @@
 		qsend(now.change_doors_pos, 0, 2, 1);
 		if (q_zero(now.change_doors_pos)) { boq = now.change_doors_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 64: // STATE 74 - singlelock.pml:309 - [doors_pos_changed?1] (0:0:0 - 1)
+	case 69: // STATE 74 - singlelock.pml:316 - [doors_pos_changed?1] (0:0:0 - 1)
 		reached[2][74] = 1;
 		if (q_zero(now.doors_pos_changed))
 		{	if (boq != now.doors_pos_changed) continue;
@@ -1286,19 +1326,19 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 65: // STATE 75 - singlelock.pml:311 - [((doors_status.lower==2))] (0:0:0 - 1)
+	case 70: // STATE 75 - singlelock.pml:318 - [((doors_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][75] = 1;
 		if (!((now.doors_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 66: // STATE 76 - singlelock.pml:313 - [((slide_status.lower==1))] (0:0:0 - 1)
+	case 71: // STATE 76 - singlelock.pml:320 - [((slide_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][76] = 1;
 		if (!((now.slide_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 67: // STATE 77 - singlelock.pml:314 - [change_slide_pos!2] (0:0:0 - 1)
+	case 72: // STATE 77 - singlelock.pml:321 - [change_slide_pos!2] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][77] = 1;
 		if (q_full(now.change_slide_pos))
@@ -1313,7 +1353,7 @@
 		qsend(now.change_slide_pos, 0, 2, 1);
 		if (q_zero(now.change_slide_pos)) { boq = now.change_slide_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 68: // STATE 78 - singlelock.pml:315 - [slide_pos_changed?1] (0:0:0 - 1)
+	case 73: // STATE 78 - singlelock.pml:322 - [slide_pos_changed?1] (0:0:0 - 1)
 		reached[2][78] = 1;
 		if (q_zero(now.slide_pos_changed))
 		{	if (boq != now.slide_pos_changed) continue;
@@ -1361,19 +1401,19 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 69: // STATE 79 - singlelock.pml:316 - [((slide_status.lower==2))] (0:0:0 - 1)
+	case 74: // STATE 79 - singlelock.pml:323 - [((slide_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][79] = 1;
 		if (!((now.slide_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 70: // STATE 85 - singlelock.pml:320 - [(!(lock_is_occupied))] (0:0:0 - 1)
+	case 75: // STATE 85 - singlelock.pml:327 - [(!(lock_is_occupied))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][85] = 1;
 		if (!( !(((int)now.lock_is_occupied))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 71: // STATE 89 - singlelock.pml:323 - [request_high?0] (0:0:0 - 1)
+	case 76: // STATE 89 - singlelock.pml:330 - [request_high?0] (0:0:0 - 1)
 		reached[2][89] = 1;
 		if (q_zero(now.request_high))
 		{	if (boq != now.request_high) continue;
@@ -1421,25 +1461,25 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 72: // STATE 90 - singlelock.pml:325 - [(lock_is_occupied)] (0:0:0 - 1)
+	case 77: // STATE 90 - singlelock.pml:332 - [(lock_is_occupied)] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][90] = 1;
 		if (!(((int)now.lock_is_occupied)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 73: // STATE 91 - singlelock.pml:328 - [((doors_status.higher==1))] (0:0:0 - 1)
+	case 78: // STATE 91 - singlelock.pml:335 - [((doors_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][91] = 1;
 		if (!((now.doors_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 74: // STATE 92 - singlelock.pml:330 - [((slide_status.higher==1))] (0:0:0 - 1)
+	case 79: // STATE 92 - singlelock.pml:337 - [((slide_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][92] = 1;
 		if (!((now.slide_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 75: // STATE 93 - singlelock.pml:331 - [change_slide_pos!1] (0:0:0 - 1)
+	case 80: // STATE 93 - singlelock.pml:338 - [change_slide_pos!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][93] = 1;
 		if (q_full(now.change_slide_pos))
@@ -1454,7 +1494,7 @@
 		qsend(now.change_slide_pos, 0, 1, 1);
 		if (q_zero(now.change_slide_pos)) { boq = now.change_slide_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 76: // STATE 94 - singlelock.pml:332 - [slide_pos_changed?1] (0:0:0 - 1)
+	case 81: // STATE 94 - singlelock.pml:339 - [slide_pos_changed?1] (0:0:0 - 1)
 		reached[2][94] = 1;
 		if (q_zero(now.slide_pos_changed))
 		{	if (boq != now.slide_pos_changed) continue;
@@ -1502,13 +1542,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 77: // STATE 95 - singlelock.pml:333 - [((slide_status.higher==2))] (0:0:0 - 1)
+	case 82: // STATE 95 - singlelock.pml:340 - [((slide_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][95] = 1;
 		if (!((now.slide_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 78: // STATE 99 - singlelock.pml:336 - [change_doors_pos!1] (0:0:0 - 3)
+	case 83: // STATE 99 - singlelock.pml:343 - [change_doors_pos!1] (0:0:0 - 3)
 		IfNotBlocked
 		reached[2][99] = 1;
 		if (q_full(now.change_doors_pos))
@@ -1523,7 +1563,7 @@
 		qsend(now.change_doors_pos, 0, 1, 1);
 		if (q_zero(now.change_doors_pos)) { boq = now.change_doors_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 79: // STATE 100 - singlelock.pml:337 - [doors_pos_changed?1] (0:0:0 - 1)
+	case 84: // STATE 100 - singlelock.pml:344 - [doors_pos_changed?1] (0:0:0 - 1)
 		reached[2][100] = 1;
 		if (q_zero(now.doors_pos_changed))
 		{	if (boq != now.doors_pos_changed) continue;
@@ -1571,19 +1611,19 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 80: // STATE 101 - singlelock.pml:339 - [((doors_status.higher==2))] (0:0:0 - 1)
+	case 85: // STATE 101 - singlelock.pml:346 - [((doors_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][101] = 1;
 		if (!((now.doors_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 81: // STATE 102 - singlelock.pml:341 - [((slide_status.higher==1))] (0:0:0 - 1)
+	case 86: // STATE 102 - singlelock.pml:348 - [((slide_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][102] = 1;
 		if (!((now.slide_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 82: // STATE 103 - singlelock.pml:342 - [change_slide_pos!1] (0:0:0 - 1)
+	case 87: // STATE 103 - singlelock.pml:349 - [change_slide_pos!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][103] = 1;
 		if (q_full(now.change_slide_pos))
@@ -1598,7 +1638,7 @@
 		qsend(now.change_slide_pos, 0, 1, 1);
 		if (q_zero(now.change_slide_pos)) { boq = now.change_slide_pos; };
 		_m = 2; goto P999; /* 0 */
-	case 83: // STATE 104 - singlelock.pml:343 - [slide_pos_changed?1] (0:0:0 - 1)
+	case 88: // STATE 104 - singlelock.pml:350 - [slide_pos_changed?1] (0:0:0 - 1)
 		reached[2][104] = 1;
 		if (q_zero(now.slide_pos_changed))
 		{	if (boq != now.slide_pos_changed) continue;
@@ -1646,38 +1686,38 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 84: // STATE 105 - singlelock.pml:344 - [((slide_status.higher==2))] (0:0:0 - 1)
+	case 89: // STATE 105 - singlelock.pml:351 - [((slide_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][105] = 1;
 		if (!((now.slide_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 85: // STATE 111 - singlelock.pml:349 - [(!(lock_is_occupied))] (0:0:0 - 1)
+	case 90: // STATE 111 - singlelock.pml:356 - [(!(lock_is_occupied))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][111] = 1;
 		if (!( !(((int)now.lock_is_occupied))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 86: // STATE 118 - singlelock.pml:352 - [-end-] (0:0:0 - 1)
+	case 91: // STATE 118 - singlelock.pml:359 - [-end-] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][118] = 1;
 		if (!delproc(1, II)) continue;
 		_m = 3; goto P999; /* 0 */
 
 		 /* PROC ship */
-	case 87: // STATE 1 - singlelock.pml:127 - [(((ship_status[shipid]==5)&&(ship_pos[shipid]!=0)))] (0:0:0 - 1)
+	case 92: // STATE 1 - singlelock.pml:134 - [(((ship_status[shipid]==5)&&(ship_pos[shipid]!=0)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][1] = 1;
-		if (!(((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]==5)&&(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])!=0))))
+		if (!(((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]==5)&&(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])!=0))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 88: // STATE 2 - singlelock.pml:129 - [((doors_status.higher==2))] (0:0:0 - 1)
+	case 93: // STATE 2 - singlelock.pml:136 - [((doors_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][2] = 1;
 		if (!((now.doors_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 89: // STATE 3 - singlelock.pml:130 - [request_high!1] (0:0:0 - 1)
+	case 94: // STATE 3 - singlelock.pml:137 - [request_high!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][3] = 1;
 		if (q_full(now.request_high))
@@ -1692,13 +1732,13 @@
 		qsend(now.request_high, 0, 1, 1);
 		if (q_zero(now.request_high)) { boq = now.request_high; };
 		_m = 2; goto P999; /* 0 */
-	case 90: // STATE 4 - singlelock.pml:131 - [((doors_status.higher==1))] (0:0:0 - 1)
+	case 95: // STATE 4 - singlelock.pml:138 - [((doors_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][4] = 1;
 		if (!((now.doors_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 91: // STATE 5 - singlelock.pml:133 - [(!(lock_is_occupied))] (9:0:3 - 1)
+	case 96: // STATE 5 - singlelock.pml:140 - [(!(lock_is_occupied))] (9:0:3 - 1)
 		IfNotBlocked
 		reached[1][5] = 1;
 		if (!( !(((int)now.lock_is_occupied))))
@@ -1706,10 +1746,10 @@
 		/* merge: ship_status[shipid] = 4(9, 6, 9) */
 		reached[1][6] = 1;
 		(trpt+1)->bup.ovals = grab_ints(3);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 4;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 4;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		/* merge: lock_is_occupied = 1(9, 7, 9) */
@@ -1722,14 +1762,14 @@
 		;
 		/* merge: nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]-1)(9, 8, 9) */
 		reached[1][8] = 1;
-		(trpt+1)->bup.ovals[2] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ])-1);
+		(trpt+1)->bup.ovals[2] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ])-1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]));
 #endif
 		;
 		_m = 3; goto P999; /* 3 */
-	case 92: // STATE 9 - singlelock.pml:137 - [observed_high[0]!1] (0:0:0 - 1)
+	case 97: // STATE 9 - singlelock.pml:144 - [observed_high[0]!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][9] = 1;
 		if (q_full(now.observed_high[0]))
@@ -1744,13 +1784,13 @@
 		qsend(now.observed_high[0], 0, 1, 1);
 		if (q_zero(now.observed_high[0])) { boq = now.observed_high[0]; };
 		_m = 2; goto P999; /* 0 */
-	case 93: // STATE 11 - singlelock.pml:139 - [(lock_is_occupied)] (0:0:0 - 1)
+	case 98: // STATE 11 - singlelock.pml:146 - [(lock_is_occupied)] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][11] = 1;
 		if (!(((int)now.lock_is_occupied)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 94: // STATE 12 - singlelock.pml:140 - [observed_high[0]!1] (0:0:0 - 1)
+	case 99: // STATE 12 - singlelock.pml:147 - [observed_high[0]!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][12] = 1;
 		if (q_full(now.observed_high[0]))
@@ -1765,7 +1805,7 @@
 		qsend(now.observed_high[0], 0, 1, 1);
 		if (q_zero(now.observed_high[0])) { boq = now.observed_high[0]; };
 		_m = 2; goto P999; /* 0 */
-	case 95: // STATE 16 - singlelock.pml:143 - [(((doors_status.higher==1)&&!(lock_is_occupied)))] (107:0:3 - 1)
+	case 100: // STATE 16 - singlelock.pml:150 - [(((doors_status.higher==1)&&!(lock_is_occupied)))] (107:0:3 - 1)
 		IfNotBlocked
 		reached[1][16] = 1;
 		if (!(((now.doors_status.higher==1)&& !(((int)now.lock_is_occupied)))))
@@ -1773,10 +1813,10 @@
 		/* merge: ship_status[shipid] = 4(107, 17, 107) */
 		reached[1][17] = 1;
 		(trpt+1)->bup.ovals = grab_ints(3);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 4;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 4;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		/* merge: lock_is_occupied = 1(107, 18, 107) */
@@ -1789,29 +1829,29 @@
 		;
 		/* merge: nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]-1)(107, 19, 107) */
 		reached[1][19] = 1;
-		(trpt+1)->bup.ovals[2] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ])-1);
+		(trpt+1)->bup.ovals[2] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ])-1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]));
 #endif
 		;
 		/* merge: goto :b2(107, 20, 107) */
 		reached[1][20] = 1;
 		;
 		_m = 3; goto P999; /* 4 */
-	case 96: // STATE 25 - singlelock.pml:149 - [((ship_status[shipid]==4))] (0:0:0 - 1)
+	case 101: // STATE 25 - singlelock.pml:156 - [((ship_status[shipid]==4))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][25] = 1;
-		if (!((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]==4)))
+		if (!((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]==4)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 97: // STATE 26 - singlelock.pml:151 - [((doors_status.lower==2))] (0:0:0 - 1)
+	case 102: // STATE 26 - singlelock.pml:158 - [((doors_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][26] = 1;
 		if (!((now.doors_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 98: // STATE 27 - singlelock.pml:152 - [request_low!1] (0:0:0 - 1)
+	case 103: // STATE 27 - singlelock.pml:159 - [request_low!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][27] = 1;
 		if (q_full(now.request_low))
@@ -1826,24 +1866,24 @@
 		qsend(now.request_low, 0, 1, 1);
 		if (q_zero(now.request_low)) { boq = now.request_low; };
 		_m = 2; goto P999; /* 0 */
-	case 99: // STATE 28 - singlelock.pml:153 - [((doors_status.lower==1))] (0:0:0 - 1)
+	case 104: // STATE 28 - singlelock.pml:160 - [((doors_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][28] = 1;
 		if (!((now.doors_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 100: // STATE 29 - singlelock.pml:156 - [(((nr_of_ships_at_pos[(ship_pos[shipid]-1)]<2)||((ship_pos[shipid]-1)==0)))] (34:0:4 - 1)
+	case 105: // STATE 29 - singlelock.pml:163 - [(((nr_of_ships_at_pos[(ship_pos[shipid]-1)]<2)||((ship_pos[shipid]-1)==0)))] (34:0:4 - 1)
 		IfNotBlocked
 		reached[1][29] = 1;
-		if (!(((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])-1), 4) ])<2)||((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])-1)==0))))
+		if (!(((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])-1), 2) ])<2)||((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])-1)==0))))
 			continue;
 		/* merge: ship_status[shipid] = 5(34, 30, 34) */
 		reached[1][30] = 1;
 		(trpt+1)->bup.ovals = grab_ints(4);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 5;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 5;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		/* merge: lock_is_occupied = 0(34, 31, 34) */
@@ -1856,22 +1896,22 @@
 		;
 		/* merge: ship_pos[shipid] = (ship_pos[shipid]-1)(34, 32, 34) */
 		reached[1][32] = 1;
-		(trpt+1)->bup.ovals[2] = ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]);
-		now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ] = (((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])-1);
+		(trpt+1)->bup.ovals[2] = ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]);
+		now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ] = (((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])-1);
 #ifdef VAR_RANGES
-		logval("ship_pos[ship:shipid]", ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]));
+		logval("ship_pos[ship:shipid]", ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]));
 #endif
 		;
 		/* merge: nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]+1)(34, 33, 34) */
 		reached[1][33] = 1;
-		(trpt+1)->bup.ovals[3] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ])+1);
+		(trpt+1)->bup.ovals[3] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ])+1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]));
 #endif
 		;
 		_m = 3; goto P999; /* 4 */
-	case 101: // STATE 34 - singlelock.pml:161 - [observed_low[0]!1] (0:0:0 - 1)
+	case 106: // STATE 34 - singlelock.pml:168 - [observed_low[0]!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][34] = 1;
 		if (q_full(now.observed_low[0]))
@@ -1886,13 +1926,13 @@
 		qsend(now.observed_low[0], 0, 1, 1);
 		if (q_zero(now.observed_low[0])) { boq = now.observed_low[0]; };
 		_m = 2; goto P999; /* 0 */
-	case 102: // STATE 36 - singlelock.pml:164 - [(((nr_of_ships_at_pos[(ship_pos[shipid]-1)]==2)&&((ship_pos[shipid]-1)!=0)))] (0:0:0 - 1)
+	case 107: // STATE 36 - singlelock.pml:171 - [(((nr_of_ships_at_pos[(ship_pos[shipid]-1)]==2)&&((ship_pos[shipid]-1)!=0)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][36] = 1;
-		if (!(((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])-1), 4) ])==2)&&((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])-1)!=0))))
+		if (!(((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])-1), 2) ])==2)&&((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])-1)!=0))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 103: // STATE 37 - singlelock.pml:165 - [observed_low[0]!1] (0:0:0 - 1)
+	case 108: // STATE 37 - singlelock.pml:172 - [observed_low[0]!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][37] = 1;
 		if (q_full(now.observed_low[0]))
@@ -1907,18 +1947,18 @@
 		qsend(now.observed_low[0], 0, 1, 1);
 		if (q_zero(now.observed_low[0])) { boq = now.observed_low[0]; };
 		_m = 2; goto P999; /* 0 */
-	case 104: // STATE 41 - singlelock.pml:169 - [(((doors_status.lower==1)&&((nr_of_ships_at_pos[(ship_pos[shipid]-1)]<2)||((ship_pos[shipid]-1)==0))))] (107:0:4 - 1)
+	case 109: // STATE 41 - singlelock.pml:176 - [(((doors_status.lower==1)&&((nr_of_ships_at_pos[(ship_pos[shipid]-1)]<2)||((ship_pos[shipid]-1)==0))))] (107:0:4 - 1)
 		IfNotBlocked
 		reached[1][41] = 1;
-		if (!(((now.doors_status.lower==1)&&((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])-1), 4) ])<2)||((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])-1)==0)))))
+		if (!(((now.doors_status.lower==1)&&((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])-1), 2) ])<2)||((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])-1)==0)))))
 			continue;
 		/* merge: ship_status[shipid] = 5(107, 42, 107) */
 		reached[1][42] = 1;
 		(trpt+1)->bup.ovals = grab_ints(4);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 5;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 5;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		/* merge: lock_is_occupied = 0(107, 43, 107) */
@@ -1931,37 +1971,37 @@
 		;
 		/* merge: ship_pos[shipid] = (ship_pos[shipid]-1)(107, 44, 107) */
 		reached[1][44] = 1;
-		(trpt+1)->bup.ovals[2] = ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]);
-		now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ] = (((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])-1);
+		(trpt+1)->bup.ovals[2] = ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]);
+		now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ] = (((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])-1);
 #ifdef VAR_RANGES
-		logval("ship_pos[ship:shipid]", ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]));
+		logval("ship_pos[ship:shipid]", ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]));
 #endif
 		;
 		/* merge: nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]+1)(107, 45, 107) */
 		reached[1][45] = 1;
-		(trpt+1)->bup.ovals[3] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ])+1);
+		(trpt+1)->bup.ovals[3] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ])+1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]));
 #endif
 		;
 		/* merge: goto :b3(107, 46, 107) */
 		reached[1][46] = 1;
 		;
 		_m = 3; goto P999; /* 5 */
-	case 105: // STATE 51 - singlelock.pml:176 - [(((ship_status[shipid]==3)&&(ship_pos[shipid]!=3)))] (0:0:0 - 1)
+	case 110: // STATE 51 - singlelock.pml:183 - [(((ship_status[shipid]==3)&&(ship_pos[shipid]!=1)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][51] = 1;
-		if (!(((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]==3)&&(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])!=3))))
+		if (!(((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]==3)&&(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])!=1))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 106: // STATE 52 - singlelock.pml:178 - [((doors_status.lower==2))] (0:0:0 - 1)
+	case 111: // STATE 52 - singlelock.pml:185 - [((doors_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][52] = 1;
 		if (!((now.doors_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 107: // STATE 53 - singlelock.pml:179 - [request_low!1] (0:0:0 - 1)
+	case 112: // STATE 53 - singlelock.pml:186 - [request_low!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][53] = 1;
 		if (q_full(now.request_low))
@@ -1976,13 +2016,13 @@
 		qsend(now.request_low, 0, 1, 1);
 		if (q_zero(now.request_low)) { boq = now.request_low; };
 		_m = 2; goto P999; /* 0 */
-	case 108: // STATE 54 - singlelock.pml:180 - [((doors_status.lower==1))] (0:0:0 - 1)
+	case 113: // STATE 54 - singlelock.pml:187 - [((doors_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][54] = 1;
 		if (!((now.doors_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 109: // STATE 55 - singlelock.pml:182 - [(!(lock_is_occupied))] (59:0:3 - 1)
+	case 114: // STATE 55 - singlelock.pml:189 - [(!(lock_is_occupied))] (59:0:3 - 1)
 		IfNotBlocked
 		reached[1][55] = 1;
 		if (!( !(((int)now.lock_is_occupied))))
@@ -1990,10 +2030,10 @@
 		/* merge: ship_status[shipid] = 2(59, 56, 59) */
 		reached[1][56] = 1;
 		(trpt+1)->bup.ovals = grab_ints(3);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 2;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 2;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		/* merge: lock_is_occupied = 1(59, 57, 59) */
@@ -2006,14 +2046,14 @@
 		;
 		/* merge: nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]-1)(59, 58, 59) */
 		reached[1][58] = 1;
-		(trpt+1)->bup.ovals[2] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ])-1);
+		(trpt+1)->bup.ovals[2] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ])-1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]));
 #endif
 		;
 		_m = 3; goto P999; /* 3 */
-	case 110: // STATE 59 - singlelock.pml:186 - [observed_low[0]!1] (0:0:0 - 1)
+	case 115: // STATE 59 - singlelock.pml:193 - [observed_low[0]!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][59] = 1;
 		if (q_full(now.observed_low[0]))
@@ -2028,13 +2068,13 @@
 		qsend(now.observed_low[0], 0, 1, 1);
 		if (q_zero(now.observed_low[0])) { boq = now.observed_low[0]; };
 		_m = 2; goto P999; /* 0 */
-	case 111: // STATE 61 - singlelock.pml:188 - [(lock_is_occupied)] (0:0:0 - 1)
+	case 116: // STATE 61 - singlelock.pml:195 - [(lock_is_occupied)] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][61] = 1;
 		if (!(((int)now.lock_is_occupied)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 112: // STATE 62 - singlelock.pml:189 - [observed_low[0]!1] (0:0:0 - 1)
+	case 117: // STATE 62 - singlelock.pml:196 - [observed_low[0]!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][62] = 1;
 		if (q_full(now.observed_low[0]))
@@ -2049,7 +2089,7 @@
 		qsend(now.observed_low[0], 0, 1, 1);
 		if (q_zero(now.observed_low[0])) { boq = now.observed_low[0]; };
 		_m = 2; goto P999; /* 0 */
-	case 113: // STATE 66 - singlelock.pml:192 - [(((doors_status.lower==1)&&!(lock_is_occupied)))] (107:0:3 - 1)
+	case 118: // STATE 66 - singlelock.pml:199 - [(((doors_status.lower==1)&&!(lock_is_occupied)))] (107:0:3 - 1)
 		IfNotBlocked
 		reached[1][66] = 1;
 		if (!(((now.doors_status.lower==1)&& !(((int)now.lock_is_occupied)))))
@@ -2057,10 +2097,10 @@
 		/* merge: ship_status[shipid] = 2(107, 67, 107) */
 		reached[1][67] = 1;
 		(trpt+1)->bup.ovals = grab_ints(3);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 2;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 2;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		/* merge: lock_is_occupied = 1(107, 68, 107) */
@@ -2073,29 +2113,29 @@
 		;
 		/* merge: nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]-1)(107, 69, 107) */
 		reached[1][69] = 1;
-		(trpt+1)->bup.ovals[2] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ])-1);
+		(trpt+1)->bup.ovals[2] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ])-1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]));
 #endif
 		;
 		/* merge: goto :b4(107, 70, 107) */
 		reached[1][70] = 1;
 		;
 		_m = 3; goto P999; /* 4 */
-	case 114: // STATE 75 - singlelock.pml:198 - [((ship_status[shipid]==2))] (0:0:0 - 1)
+	case 119: // STATE 75 - singlelock.pml:205 - [((ship_status[shipid]==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][75] = 1;
-		if (!((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]==2)))
+		if (!((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 115: // STATE 76 - singlelock.pml:200 - [((doors_status.higher==2))] (0:0:0 - 1)
+	case 120: // STATE 76 - singlelock.pml:207 - [((doors_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][76] = 1;
 		if (!((now.doors_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 116: // STATE 77 - singlelock.pml:201 - [request_high!1] (0:0:0 - 1)
+	case 121: // STATE 77 - singlelock.pml:208 - [request_high!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][77] = 1;
 		if (q_full(now.request_high))
@@ -2110,24 +2150,24 @@
 		qsend(now.request_high, 0, 1, 1);
 		if (q_zero(now.request_high)) { boq = now.request_high; };
 		_m = 2; goto P999; /* 0 */
-	case 117: // STATE 78 - singlelock.pml:202 - [((doors_status.higher==1))] (0:0:0 - 1)
+	case 122: // STATE 78 - singlelock.pml:209 - [((doors_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][78] = 1;
 		if (!((now.doors_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 118: // STATE 79 - singlelock.pml:205 - [(((nr_of_ships_at_pos[(ship_pos[shipid]+1)]<2)||((ship_pos[shipid]+1)==3)))] (84:0:4 - 1)
+	case 123: // STATE 79 - singlelock.pml:212 - [(((nr_of_ships_at_pos[(ship_pos[shipid]+1)]<2)||((ship_pos[shipid]+1)==1)))] (84:0:4 - 1)
 		IfNotBlocked
 		reached[1][79] = 1;
-		if (!(((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])+1), 4) ])<2)||((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])+1)==3))))
+		if (!(((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])+1), 2) ])<2)||((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])+1)==1))))
 			continue;
 		/* merge: ship_status[shipid] = 3(84, 80, 84) */
 		reached[1][80] = 1;
 		(trpt+1)->bup.ovals = grab_ints(4);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 3;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 3;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		/* merge: lock_is_occupied = 0(84, 81, 84) */
@@ -2140,22 +2180,22 @@
 		;
 		/* merge: ship_pos[shipid] = (ship_pos[shipid]+1)(84, 82, 84) */
 		reached[1][82] = 1;
-		(trpt+1)->bup.ovals[2] = ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]);
-		now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ] = (((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])+1);
+		(trpt+1)->bup.ovals[2] = ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]);
+		now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ] = (((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])+1);
 #ifdef VAR_RANGES
-		logval("ship_pos[ship:shipid]", ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]));
+		logval("ship_pos[ship:shipid]", ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]));
 #endif
 		;
 		/* merge: nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]+1)(84, 83, 84) */
 		reached[1][83] = 1;
-		(trpt+1)->bup.ovals[3] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ])+1);
+		(trpt+1)->bup.ovals[3] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ])+1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]));
 #endif
 		;
 		_m = 3; goto P999; /* 4 */
-	case 119: // STATE 84 - singlelock.pml:210 - [observed_high[0]!1] (0:0:0 - 1)
+	case 124: // STATE 84 - singlelock.pml:217 - [observed_high[0]!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][84] = 1;
 		if (q_full(now.observed_high[0]))
@@ -2170,13 +2210,13 @@
 		qsend(now.observed_high[0], 0, 1, 1);
 		if (q_zero(now.observed_high[0])) { boq = now.observed_high[0]; };
 		_m = 2; goto P999; /* 0 */
-	case 120: // STATE 86 - singlelock.pml:213 - [(((nr_of_ships_at_pos[(ship_pos[shipid]+1)]==2)&&((ship_pos[shipid]+1)!=3)))] (0:0:0 - 1)
+	case 125: // STATE 86 - singlelock.pml:220 - [(((nr_of_ships_at_pos[(ship_pos[shipid]+1)]==2)&&((ship_pos[shipid]+1)!=1)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][86] = 1;
-		if (!(((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])+1), 4) ])==2)&&((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])+1)!=3))))
+		if (!(((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])+1), 2) ])==2)&&((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])+1)!=1))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 121: // STATE 87 - singlelock.pml:214 - [observed_high[0]!1] (0:0:0 - 1)
+	case 126: // STATE 87 - singlelock.pml:221 - [observed_high[0]!1] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][87] = 1;
 		if (q_full(now.observed_high[0]))
@@ -2191,18 +2231,18 @@
 		qsend(now.observed_high[0], 0, 1, 1);
 		if (q_zero(now.observed_high[0])) { boq = now.observed_high[0]; };
 		_m = 2; goto P999; /* 0 */
-	case 122: // STATE 91 - singlelock.pml:218 - [(((doors_status.higher==1)&&((nr_of_ships_at_pos[(ship_pos[shipid]+1)]<2)||((ship_pos[shipid]+1)==3))))] (107:0:4 - 1)
+	case 127: // STATE 91 - singlelock.pml:225 - [(((doors_status.higher==1)&&((nr_of_ships_at_pos[(ship_pos[shipid]+1)]<2)||((ship_pos[shipid]+1)==1))))] (107:0:4 - 1)
 		IfNotBlocked
 		reached[1][91] = 1;
-		if (!(((now.doors_status.higher==1)&&((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])+1), 4) ])<2)||((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])+1)==3)))))
+		if (!(((now.doors_status.higher==1)&&((((int)now.nr_of_ships_at_pos[ Index((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])+1), 2) ])<2)||((((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])+1)==1)))))
 			continue;
 		/* merge: ship_status[shipid] = 3(107, 92, 107) */
 		reached[1][92] = 1;
 		(trpt+1)->bup.ovals = grab_ints(4);
-		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 3;
+		(trpt+1)->bup.ovals[0] = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 3;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		/* merge: lock_is_occupied = 0(107, 93, 107) */
@@ -2215,84 +2255,84 @@
 		;
 		/* merge: ship_pos[shipid] = (ship_pos[shipid]+1)(107, 94, 107) */
 		reached[1][94] = 1;
-		(trpt+1)->bup.ovals[2] = ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]);
-		now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ] = (((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])+1);
+		(trpt+1)->bup.ovals[2] = ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]);
+		now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ] = (((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])+1);
 #ifdef VAR_RANGES
-		logval("ship_pos[ship:shipid]", ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]));
+		logval("ship_pos[ship:shipid]", ((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]));
 #endif
 		;
 		/* merge: nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]+1)(107, 95, 107) */
 		reached[1][95] = 1;
-		(trpt+1)->bup.ovals[3] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]);
-		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 2) ], 4) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ])+1);
+		(trpt+1)->bup.ovals[3] = ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]);
+		now.nr_of_ships_at_pos[ Index(now.ship_pos[ Index(((P1 *)_this)->shipid, 1) ], 2) ] = (((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ])+1);
 #ifdef VAR_RANGES
-		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ]), 4) ]));
+		logval("nr_of_ships_at_pos[ship_pos[ship:shipid]]", ((int)now.nr_of_ships_at_pos[ Index(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ]), 2) ]));
 #endif
 		;
 		/* merge: goto :b5(107, 96, 107) */
 		reached[1][96] = 1;
 		;
 		_m = 3; goto P999; /* 5 */
-	case 123: // STATE 101 - singlelock.pml:225 - [(((ship_status[shipid]==5)&&(ship_pos[shipid]==0)))] (0:0:0 - 1)
+	case 128: // STATE 101 - singlelock.pml:232 - [(((ship_status[shipid]==5)&&(ship_pos[shipid]==0)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][101] = 1;
-		if (!(((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]==5)&&(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])==0))))
+		if (!(((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]==5)&&(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])==0))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 124: // STATE 102 - singlelock.pml:226 - [ship_status[shipid] = 1] (0:0:1 - 1)
+	case 129: // STATE 102 - singlelock.pml:233 - [ship_status[shipid] = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[1][102] = 1;
-		(trpt+1)->bup.oval = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 1;
+		(trpt+1)->bup.oval = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 1;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 125: // STATE 103 - singlelock.pml:226 - [ship_status[shipid] = 3] (0:0:1 - 1)
+	case 130: // STATE 103 - singlelock.pml:233 - [ship_status[shipid] = 3] (0:0:1 - 1)
 		IfNotBlocked
 		reached[1][103] = 1;
-		(trpt+1)->bup.oval = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 3;
+		(trpt+1)->bup.oval = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 3;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 126: // STATE 104 - singlelock.pml:227 - [(((ship_status[shipid]==3)&&(ship_pos[shipid]==3)))] (0:0:0 - 1)
+	case 131: // STATE 104 - singlelock.pml:234 - [(((ship_status[shipid]==3)&&(ship_pos[shipid]==1)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][104] = 1;
-		if (!(((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]==3)&&(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 2) ])==3))))
+		if (!(((now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]==3)&&(((int)now.ship_pos[ Index(((int)((P1 *)_this)->shipid), 1) ])==1))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 127: // STATE 105 - singlelock.pml:228 - [ship_status[shipid] = 1] (0:0:1 - 1)
+	case 132: // STATE 105 - singlelock.pml:235 - [ship_status[shipid] = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[1][105] = 1;
-		(trpt+1)->bup.oval = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 1;
+		(trpt+1)->bup.oval = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 1;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 128: // STATE 106 - singlelock.pml:228 - [ship_status[shipid] = 5] (0:0:1 - 1)
+	case 133: // STATE 106 - singlelock.pml:235 - [ship_status[shipid] = 5] (0:0:1 - 1)
 		IfNotBlocked
 		reached[1][106] = 1;
-		(trpt+1)->bup.oval = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ];
-		now.ship_status[ Index(((P1 *)_this)->shipid, 2) ] = 5;
+		(trpt+1)->bup.oval = now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ];
+		now.ship_status[ Index(((P1 *)_this)->shipid, 1) ] = 5;
 #ifdef VAR_RANGES
-		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 2) ]);
+		logval("ship_status[ship:shipid]", now.ship_status[ Index(((int)((P1 *)_this)->shipid), 1) ]);
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 129: // STATE 110 - singlelock.pml:230 - [-end-] (0:0:0 - 1)
+	case 134: // STATE 110 - singlelock.pml:237 - [-end-] (0:0:0 - 1)
 		IfNotBlocked
 		reached[1][110] = 1;
 		if (!delproc(1, II)) continue;
 		_m = 3; goto P999; /* 0 */
 
 		 /* PROC lock */
-	case 130: // STATE 1 - singlelock.pml:84 - [change_doors_pos?2] (0:0:0 - 1)
+	case 135: // STATE 1 - singlelock.pml:91 - [change_doors_pos?2] (0:0:0 - 1)
 		reached[0][1] = 1;
 		if (q_zero(now.change_doors_pos))
 		{	if (boq != now.change_doors_pos) continue;
@@ -2340,13 +2380,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 131: // STATE 2 - singlelock.pml:86 - [((doors_status.lower==2))] (0:0:0 - 1)
+	case 136: // STATE 2 - singlelock.pml:93 - [((doors_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][2] = 1;
 		if (!((now.doors_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 132: // STATE 3 - singlelock.pml:86 - [doors_status.lower = 1] (0:0:1 - 1)
+	case 137: // STATE 3 - singlelock.pml:93 - [doors_status.lower = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][3] = 1;
 		(trpt+1)->bup.oval = now.doors_status.lower;
@@ -2356,7 +2396,7 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 133: // STATE 4 - singlelock.pml:87 - [lock_water_level = 2] (0:0:1 - 1)
+	case 138: // STATE 4 - singlelock.pml:94 - [lock_water_level = 2] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][4] = 1;
 		(trpt+1)->bup.oval = lock_water_level;
@@ -2366,13 +2406,13 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 134: // STATE 5 - singlelock.pml:88 - [((doors_status.lower==1))] (0:0:0 - 1)
+	case 139: // STATE 5 - singlelock.pml:95 - [((doors_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][5] = 1;
 		if (!((now.doors_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 135: // STATE 6 - singlelock.pml:88 - [doors_status.lower = 2] (0:0:1 - 1)
+	case 140: // STATE 6 - singlelock.pml:95 - [doors_status.lower = 2] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][6] = 1;
 		(trpt+1)->bup.oval = now.doors_status.lower;
@@ -2382,7 +2422,7 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 136: // STATE 9 - singlelock.pml:90 - [doors_pos_changed!1] (0:0:0 - 3)
+	case 141: // STATE 9 - singlelock.pml:97 - [doors_pos_changed!1] (0:0:0 - 3)
 		IfNotBlocked
 		reached[0][9] = 1;
 		if (q_full(now.doors_pos_changed))
@@ -2397,7 +2437,7 @@
 		qsend(now.doors_pos_changed, 0, 1, 1);
 		if (q_zero(now.doors_pos_changed)) { boq = now.doors_pos_changed; };
 		_m = 2; goto P999; /* 0 */
-	case 137: // STATE 10 - singlelock.pml:91 - [change_doors_pos?1] (0:0:0 - 1)
+	case 142: // STATE 10 - singlelock.pml:98 - [change_doors_pos?1] (0:0:0 - 1)
 		reached[0][10] = 1;
 		if (q_zero(now.change_doors_pos))
 		{	if (boq != now.change_doors_pos) continue;
@@ -2445,13 +2485,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 138: // STATE 11 - singlelock.pml:93 - [((doors_status.higher==2))] (0:0:0 - 1)
+	case 143: // STATE 11 - singlelock.pml:100 - [((doors_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][11] = 1;
 		if (!((now.doors_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 139: // STATE 12 - singlelock.pml:93 - [doors_status.higher = 1] (0:0:1 - 1)
+	case 144: // STATE 12 - singlelock.pml:100 - [doors_status.higher = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][12] = 1;
 		(trpt+1)->bup.oval = now.doors_status.higher;
@@ -2461,13 +2501,13 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 140: // STATE 13 - singlelock.pml:95 - [(((doors_status.lower==2)&&(slide_status.lower==2)))] (0:0:0 - 1)
+	case 145: // STATE 13 - singlelock.pml:102 - [(((doors_status.lower==2)&&(slide_status.lower==2)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][13] = 1;
 		if (!(((now.doors_status.lower==2)&&(now.slide_status.lower==2))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 141: // STATE 14 - singlelock.pml:96 - [lock_water_level = 1] (0:0:1 - 1)
+	case 146: // STATE 14 - singlelock.pml:103 - [lock_water_level = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][14] = 1;
 		(trpt+1)->bup.oval = lock_water_level;
@@ -2477,19 +2517,19 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 142: // STATE 15 - singlelock.pml:97 - [(((doors_status.lower==1)||(slide_status.lower==1)))] (0:0:0 - 1)
+	case 147: // STATE 15 - singlelock.pml:104 - [(((doors_status.lower==1)||(slide_status.lower==1)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][15] = 1;
 		if (!(((now.doors_status.lower==1)||(now.slide_status.lower==1))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 143: // STATE 19 - singlelock.pml:99 - [((doors_status.higher==1))] (0:0:0 - 1)
+	case 148: // STATE 19 - singlelock.pml:106 - [((doors_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][19] = 1;
 		if (!((now.doors_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 144: // STATE 20 - singlelock.pml:99 - [doors_status.higher = 2] (0:0:1 - 1)
+	case 149: // STATE 20 - singlelock.pml:106 - [doors_status.higher = 2] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][20] = 1;
 		(trpt+1)->bup.oval = now.doors_status.higher;
@@ -2499,7 +2539,7 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 145: // STATE 23 - singlelock.pml:101 - [doors_pos_changed!1] (0:0:0 - 5)
+	case 150: // STATE 23 - singlelock.pml:108 - [doors_pos_changed!1] (0:0:0 - 5)
 		IfNotBlocked
 		reached[0][23] = 1;
 		if (q_full(now.doors_pos_changed))
@@ -2514,7 +2554,7 @@
 		qsend(now.doors_pos_changed, 0, 1, 1);
 		if (q_zero(now.doors_pos_changed)) { boq = now.doors_pos_changed; };
 		_m = 2; goto P999; /* 0 */
-	case 146: // STATE 24 - singlelock.pml:102 - [change_slide_pos?2] (0:0:0 - 1)
+	case 151: // STATE 24 - singlelock.pml:109 - [change_slide_pos?2] (0:0:0 - 1)
 		reached[0][24] = 1;
 		if (q_zero(now.change_slide_pos))
 		{	if (boq != now.change_slide_pos) continue;
@@ -2562,13 +2602,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 147: // STATE 25 - singlelock.pml:104 - [((slide_status.lower==2))] (0:0:0 - 1)
+	case 152: // STATE 25 - singlelock.pml:111 - [((slide_status.lower==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][25] = 1;
 		if (!((now.slide_status.lower==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 148: // STATE 26 - singlelock.pml:104 - [slide_status.lower = 1] (0:0:1 - 1)
+	case 153: // STATE 26 - singlelock.pml:111 - [slide_status.lower = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][26] = 1;
 		(trpt+1)->bup.oval = now.slide_status.lower;
@@ -2578,7 +2618,7 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 149: // STATE 27 - singlelock.pml:105 - [lock_water_level = 2] (0:0:1 - 1)
+	case 154: // STATE 27 - singlelock.pml:112 - [lock_water_level = 2] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][27] = 1;
 		(trpt+1)->bup.oval = lock_water_level;
@@ -2588,13 +2628,13 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 150: // STATE 28 - singlelock.pml:106 - [((slide_status.lower==1))] (0:0:0 - 1)
+	case 155: // STATE 28 - singlelock.pml:113 - [((slide_status.lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][28] = 1;
 		if (!((now.slide_status.lower==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 151: // STATE 29 - singlelock.pml:106 - [slide_status.lower = 2] (0:0:1 - 1)
+	case 156: // STATE 29 - singlelock.pml:113 - [slide_status.lower = 2] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][29] = 1;
 		(trpt+1)->bup.oval = now.slide_status.lower;
@@ -2604,7 +2644,7 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 152: // STATE 32 - singlelock.pml:108 - [slide_pos_changed!1] (0:0:0 - 3)
+	case 157: // STATE 32 - singlelock.pml:115 - [slide_pos_changed!1] (0:0:0 - 3)
 		IfNotBlocked
 		reached[0][32] = 1;
 		if (q_full(now.slide_pos_changed))
@@ -2619,7 +2659,7 @@
 		qsend(now.slide_pos_changed, 0, 1, 1);
 		if (q_zero(now.slide_pos_changed)) { boq = now.slide_pos_changed; };
 		_m = 2; goto P999; /* 0 */
-	case 153: // STATE 33 - singlelock.pml:109 - [change_slide_pos?1] (0:0:0 - 1)
+	case 158: // STATE 33 - singlelock.pml:116 - [change_slide_pos?1] (0:0:0 - 1)
 		reached[0][33] = 1;
 		if (q_zero(now.change_slide_pos))
 		{	if (boq != now.change_slide_pos) continue;
@@ -2667,13 +2707,13 @@
 
 		};
 		_m = 4; goto P999; /* 0 */
-	case 154: // STATE 34 - singlelock.pml:111 - [((slide_status.higher==2))] (0:0:0 - 1)
+	case 159: // STATE 34 - singlelock.pml:118 - [((slide_status.higher==2))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][34] = 1;
 		if (!((now.slide_status.higher==2)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 155: // STATE 35 - singlelock.pml:111 - [slide_status.higher = 1] (0:0:1 - 1)
+	case 160: // STATE 35 - singlelock.pml:118 - [slide_status.higher = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][35] = 1;
 		(trpt+1)->bup.oval = now.slide_status.higher;
@@ -2683,13 +2723,13 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 156: // STATE 36 - singlelock.pml:113 - [(((doors_status.lower==2)&&(slide_status.lower==2)))] (0:0:0 - 1)
+	case 161: // STATE 36 - singlelock.pml:120 - [(((doors_status.lower==2)&&(slide_status.lower==2)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][36] = 1;
 		if (!(((now.doors_status.lower==2)&&(now.slide_status.lower==2))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 157: // STATE 37 - singlelock.pml:114 - [lock_water_level = 1] (0:0:1 - 1)
+	case 162: // STATE 37 - singlelock.pml:121 - [lock_water_level = 1] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][37] = 1;
 		(trpt+1)->bup.oval = lock_water_level;
@@ -2699,19 +2739,19 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 158: // STATE 38 - singlelock.pml:115 - [(((doors_status.lower==1)||(slide_status.lower==1)))] (0:0:0 - 1)
+	case 163: // STATE 38 - singlelock.pml:122 - [(((doors_status.lower==1)||(slide_status.lower==1)))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][38] = 1;
 		if (!(((now.doors_status.lower==1)||(now.slide_status.lower==1))))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 159: // STATE 42 - singlelock.pml:117 - [((slide_status.higher==1))] (0:0:0 - 1)
+	case 164: // STATE 42 - singlelock.pml:124 - [((slide_status.higher==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][42] = 1;
 		if (!((now.slide_status.higher==1)))
 			continue;
 		_m = 3; goto P999; /* 0 */
-	case 160: // STATE 43 - singlelock.pml:117 - [slide_status.higher = 2] (0:0:1 - 1)
+	case 165: // STATE 43 - singlelock.pml:124 - [slide_status.higher = 2] (0:0:1 - 1)
 		IfNotBlocked
 		reached[0][43] = 1;
 		(trpt+1)->bup.oval = now.slide_status.higher;
@@ -2721,7 +2761,7 @@
 #endif
 		;
 		_m = 3; goto P999; /* 0 */
-	case 161: // STATE 46 - singlelock.pml:119 - [slide_pos_changed!1] (0:0:0 - 5)
+	case 166: // STATE 46 - singlelock.pml:126 - [slide_pos_changed!1] (0:0:0 - 5)
 		IfNotBlocked
 		reached[0][46] = 1;
 		if (q_full(now.slide_pos_changed))
@@ -2736,7 +2776,7 @@
 		qsend(now.slide_pos_changed, 0, 1, 1);
 		if (q_zero(now.slide_pos_changed)) { boq = now.slide_pos_changed; };
 		_m = 2; goto P999; /* 0 */
-	case 162: // STATE 50 - singlelock.pml:121 - [-end-] (0:0:0 - 1)
+	case 167: // STATE 50 - singlelock.pml:128 - [-end-] (0:0:0 - 1)
 		IfNotBlocked
 		reached[0][50] = 1;
 		if (!delproc(1, II)) continue;
