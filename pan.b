@@ -184,24 +184,19 @@
 
 	case 32: // STATE 25
 		;
-	/* 0 */	((P2 *)_this)->lockid = trpt->bup.oval;
 		XX = 1;
 		unrecv(now.doors_pos_changed[ Index(((int)((P2 *)_this)->lockid), 3) ], XX-1, 0, 1, 1);
 		;
 		;
 		goto R999;
-
-	case 33: // STATE 26
+;
 		;
-	/* 0 */	((P2 *)_this)->lockid = trpt->bup.oval;
-		;
-		;
-		goto R999;
-
+		
 	case 34: // STATE 30
 		;
+	/* 0 */	((P2 *)_this)->lockid = trpt->bup.oval;
 		XX = 1;
-		unrecv(now.observed_low[0], XX-1, 0, 1, 1);
+		unrecv(now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ], XX-1, 0, 1, 1);
 		;
 		;
 		goto R999;

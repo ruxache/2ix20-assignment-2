@@ -554,7 +554,7 @@
 		qsend(now.change_doors_pos[ Index(((int)((P2 *)_this)->lockid), 3) ], 0, 2, 0, 1);
 		if (q_zero(now.change_doors_pos[ Index(((int)((P2 *)_this)->lockid), 3) ])) { boq = now.change_doors_pos[ Index(((int)((P2 *)_this)->lockid), 3) ]; };
 		_m = 2; goto P999; /* 0 */
-	case 32: // STATE 25 - multiplelocks.pml:282 - [doors_pos_changed[lockid]?1] (0:0:1 - 1)
+	case 32: // STATE 25 - multiplelocks.pml:282 - [doors_pos_changed[lockid]?1] (0:0:0 - 1)
 		reached[2][25] = 1;
 		if (q_zero(now.doors_pos_changed[ Index(((int)((P2 *)_this)->lockid), 3) ]))
 		{	if (boq != now.doors_pos_changed[ Index(((int)((P2 *)_this)->lockid), 3) ]) continue;
@@ -601,51 +601,39 @@
 #endif
 
 		};
-		if (TstOnly) return 1; /* TT */
-		/* dead 1: lockid */  (trpt+1)->bup.oval = ((P2 *)_this)->lockid;
-#ifdef HAS_CODE
-		if (!readtrail)
-#endif
-			((P2 *)_this)->lockid = 0;
 		_m = 4; goto P999; /* 0 */
-	case 33: // STATE 26 - multiplelocks.pml:283 - [((doors_status[lockid].lower==1))] (0:0:1 - 1)
+	case 33: // STATE 26 - multiplelocks.pml:283 - [((doors_status[lockid].lower==1))] (0:0:0 - 1)
 		IfNotBlocked
 		reached[2][26] = 1;
 		if (!((now.doors_status[ Index(((int)((P2 *)_this)->lockid), 3) ].lower==1)))
 			continue;
-		if (TstOnly) return 1; /* TT */
-		/* dead 1: lockid */  (trpt+1)->bup.oval = ((P2 *)_this)->lockid;
-#ifdef HAS_CODE
-		if (!readtrail)
-#endif
-			((P2 *)_this)->lockid = 0;
 		_m = 3; goto P999; /* 0 */
-	case 34: // STATE 30 - multiplelocks.pml:285 - [observed_low[0]?1] (0:0:0 - 3)
+	case 34: // STATE 30 - multiplelocks.pml:285 - [observed_low[lockid]?1] (0:0:1 - 3)
 		reached[2][30] = 1;
-		if (q_zero(now.observed_low[0]))
-		{	if (boq != now.observed_low[0]) continue;
+		if (q_zero(now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ]))
+		{	if (boq != now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ]) continue;
 		} else
 		{	if (boq != -1) continue;
 		}
-		if (q_len(now.observed_low[0]) == 0) continue;
+		if (q_len(now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ]) == 0) continue;
 
 		XX=1;
-		if (1 != qrecv(now.observed_low[0], 0, 0, 0)) continue;
+		if (1 != qrecv(now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ], 0, 0, 0)) continue;
 		
 #ifndef BFS_PAR
-		if (q_flds[((Q0 *)qptr(now.observed_low[0]-1))->_t] != 1)
+		if (q_flds[((Q0 *)qptr(now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ]-1))->_t] != 1)
 			Uerror("wrong nr of msg fields in rcv");
 #endif
 		;
-		qrecv(now.observed_low[0], XX-1, 0, 1);
+		qrecv(now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ], XX-1, 0, 1);
 		
 #ifdef HAS_CODE
 		if (readtrail && gui) {
 			char simtmp[32];
-			sprintf(simvals, "%d?", now.observed_low[0]);
+			sprintf(simvals, "%d?", now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ]);
 		sprintf(simtmp, "%d", 1); strcat(simvals, simtmp);		}
 #endif
-		if (q_zero(now.observed_low[0]))
+		if (q_zero(now.observed_low[ Index(((int)((P2 *)_this)->lockid), 3) ]))
 		{	boq = -1;
 #ifndef NOFAIR
 			if (fairness
@@ -667,6 +655,12 @@
 #endif
 
 		};
+		if (TstOnly) return 1; /* TT */
+		/* dead 1: lockid */  (trpt+1)->bup.oval = ((P2 *)_this)->lockid;
+#ifdef HAS_CODE
+		if (!readtrail)
+#endif
+			((P2 *)_this)->lockid = 0;
 		_m = 4; goto P999; /* 0 */
 	case 35: // STATE 31 - multiplelocks.pml:287 - [request_high?1,lockid] (0:0:1 - 1)
 		reached[2][31] = 1;

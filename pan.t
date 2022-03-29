@@ -126,9 +126,9 @@ settable(void)
 	trans[2][24]	= settr(192,0,25,31,31,"change_doors_pos[lockid]!2", 1, 7, 0);
 	trans[2][25]	= settr(193,0,30,32,32,"doors_pos_changed[lockid]?1", 1, 508, 0);
 	trans[2][29]	= settr(197,0,30,1,0,".(goto)", 0, 2, 0);
-	trans[2][26]	= settr(194,0,27,33,33,"((doors_status[lockid].lower==1))", 1, 2, 0);
+	trans[2][26]	= settr(194,0,27,33,0,"((doors_status[lockid].lower==1))", 1, 2, 0);
 	trans[2][27]	= settr(195,0,30,1,0,"(1)", 0, 2, 0);
-	trans[2][30]	= settr(198,0,113,34,34,"observed_low[0]?1", 1, 505, 0);
+	trans[2][30]	= settr(198,0,113,34,34,"observed_low[lockid]?1", 1, 505, 0);
 	trans[2][31]	= settr(199,0,58,35,35,"request_high?1,lockid", 1, 504, 0);
 	T = trans[2][58] = settr(226,0,0,0,0,"IF", 0, 2, 0);
 	T = T->nxt	= settr(226,0,32,0,0,"IF", 0, 2, 0);

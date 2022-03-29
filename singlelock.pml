@@ -11,7 +11,7 @@
 // The number of locks.
 #define N	1
 // The number of ships.
-#define M	1
+#define M	5
 // The maximum number of ships immediately at either side of a lock.
 #define MAX 2
 

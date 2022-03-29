@@ -177,11 +177,11 @@ proctype ship(byte shipid) {
 						lock_is_occupied[lockid] = false;
 						ship_pos[shipid]--;
 						nr_of_ships_at_pos[ship_pos[shipid]]++;
-						observed_low[0]!true;
+						observed_low[lockid]!true;
 						break;
 				:: (nr_of_ships_at_pos[ship_pos[shipid]-1] == MAX
 					&& ship_pos[shipid]-1 != 0) ->
-						observed_low[0]!true;
+						observed_low[lockid]!true;
 				fi; }
 		:: atomic { doors_status[lockid].lower == open &&
 			(nr_of_ships_at_pos[ship_pos[shipid]-1] < MAX
@@ -231,11 +231,11 @@ proctype ship(byte shipid) {
 						lock_is_occupied[lockid] = false;
 						ship_pos[shipid]++;
 						nr_of_ships_at_pos[ship_pos[shipid]]++;
-						observed_high[0]!true;
+						observed_high[lockid]!true;
 						break;
 				:: (nr_of_ships_at_pos[ship_pos[shipid]+1] == MAX
 					&& ship_pos[shipid]+1 != N) ->
-						observed_high[0]!true;
+						observed_high[lockid]!true;
 				fi; }
 		:: atomic { doors_status[lockid].higher == open &&
 			(nr_of_ships_at_pos[ship_pos[shipid]+1] < MAX
@@ -282,7 +282,7 @@ proctype main_control() {
 			change_doors_pos[lockid]!low; doors_pos_changed[lockid]?true;
 		:: doors_status[lockid].lower == open -> skip;
 		fi;
-		observed_low[0]?true;
+		observed_low[lockid]?true;
 
 	:: request_high?true, lockid ->
 
