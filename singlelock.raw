@@ -1,76 +1,100 @@
+warning: never claim + accept labels requires -a flag to fully verify
+pan: ltl fomula p1
 
 (Spin Version 6.4.9 -- 17 December 2018)
 
 Full statespace search for:
-	never claim         	- (none specified)
-	assertion violations	+
+	never claim         	+ (p1)
+	assertion violations	+ (if within scope of claim)
 	cycle checks       	- (disabled by -DSAFETY)
-	invalid end states	+
+	invalid end states	- (disabled by never claim)
 
-State-vector 124 byte, depth reached 228, errors: 0
-      207 states, stored
-      118 states, matched
-      325 transitions (= stored+matched)
-       54 atomic steps
+State-vector 140 byte, depth reached 1063, errors: 0
+     1086 states, stored
+     1711 states, matched
+     2797 transitions (= stored+matched)
+      292 atomic steps
 hash conflicts:         0 (resolved)
 
 Stats on memory usage (in Megabytes):
-    0.028	equivalent memory usage for states (stored*(State-vector + overhead))
-    0.257	actual memory usage for states
+    0.166	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.249	actual memory usage for states
   128.000	memory used for hash table (-w24)
    45.777	memory used for DFS stack (-m1000000)
   173.972	total actual memory usage
 
 
 unreached in proctype lock
-	singlelock.pml:128, state 50, "-end-"
+	singlelock.pml:131, state 50, "-end-"
 	(1 of 50 states)
 unreached in proctype ship
-	singlelock.pml:137, state 3, "request_high!1"
-	singlelock.pml:142, state 7, "lock_is_occupied = 1"
-	singlelock.pml:143, state 8, "nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]-1)"
-	singlelock.pml:144, state 9, "observed_high[0]!1"
-	singlelock.pml:147, state 12, "observed_high[0]!1"
-	singlelock.pml:140, state 13, "(!(lock_is_occupied))"
-	singlelock.pml:140, state 13, "(lock_is_occupied)"
-	singlelock.pml:138, state 15, "((doors_status.higher==1))"
-	singlelock.pml:172, state 37, "observed_low[0]!1"
-	singlelock.pml:178, state 43, "lock_is_occupied = 0"
-	singlelock.pml:179, state 44, "ship_pos[shipid] = (ship_pos[shipid]-1)"
-	singlelock.pml:180, state 45, "nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]+1)"
-	singlelock.pml:196, state 62, "observed_low[0]!1"
-	singlelock.pml:221, state 87, "observed_high[0]!1"
-	singlelock.pml:227, state 93, "lock_is_occupied = 0"
-	singlelock.pml:228, state 94, "ship_pos[shipid] = (ship_pos[shipid]+1)"
-	singlelock.pml:229, state 95, "nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]+1)"
-	singlelock.pml:237, state 110, "-end-"
+	singlelock.pml:140, state 3, "request_high!1"
+	singlelock.pml:145, state 7, "lock_is_occupied = 1"
+	singlelock.pml:146, state 8, "nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]-1)"
+	singlelock.pml:147, state 9, "observed_high[0]!1"
+	singlelock.pml:150, state 12, "observed_high[0]!1"
+	singlelock.pml:143, state 13, "(!(lock_is_occupied))"
+	singlelock.pml:143, state 13, "(lock_is_occupied)"
+	singlelock.pml:141, state 15, "((doors_status.higher==1))"
+	singlelock.pml:175, state 37, "observed_low[0]!1"
+	singlelock.pml:181, state 43, "lock_is_occupied = 0"
+	singlelock.pml:182, state 44, "ship_pos[shipid] = (ship_pos[shipid]-1)"
+	singlelock.pml:183, state 45, "nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]+1)"
+	singlelock.pml:199, state 62, "observed_low[0]!1"
+	singlelock.pml:224, state 87, "observed_high[0]!1"
+	singlelock.pml:230, state 93, "lock_is_occupied = 0"
+	singlelock.pml:231, state 94, "ship_pos[shipid] = (ship_pos[shipid]+1)"
+	singlelock.pml:232, state 95, "nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]+1)"
+	singlelock.pml:240, state 110, "-end-"
 	(17 of 110 states)
 unreached in proctype main_control
-	singlelock.pml:310, state 67, "change_slide_pos!2"
-	singlelock.pml:311, state 68, "slide_pos_changed?1"
-	singlelock.pml:315, state 73, "change_doors_pos!2"
-	singlelock.pml:316, state 74, "doors_pos_changed?1"
-	singlelock.pml:321, state 77, "change_slide_pos!2"
-	singlelock.pml:322, state 78, "slide_pos_changed?1"
-	singlelock.pml:307, state 83, "((doors_status.lower==1))"
-	singlelock.pml:307, state 83, "((doors_status.lower==2))"
-	singlelock.pml:338, state 93, "change_slide_pos!1"
-	singlelock.pml:339, state 94, "slide_pos_changed?1"
-	singlelock.pml:343, state 99, "change_doors_pos!1"
-	singlelock.pml:344, state 100, "doors_pos_changed?1"
-	singlelock.pml:349, state 103, "change_slide_pos!1"
-	singlelock.pml:350, state 104, "slide_pos_changed?1"
-	singlelock.pml:335, state 109, "((doors_status.higher==1))"
-	singlelock.pml:335, state 109, "((doors_status.higher==2))"
-	singlelock.pml:359, state 118, "-end-"
+	singlelock.pml:313, state 67, "change_slide_pos!2"
+	singlelock.pml:314, state 68, "slide_pos_changed?1"
+	singlelock.pml:318, state 73, "change_doors_pos!2"
+	singlelock.pml:319, state 74, "doors_pos_changed?1"
+	singlelock.pml:324, state 77, "change_slide_pos!2"
+	singlelock.pml:325, state 78, "slide_pos_changed?1"
+	singlelock.pml:310, state 83, "((doors_status.lower==1))"
+	singlelock.pml:310, state 83, "((doors_status.lower==2))"
+	singlelock.pml:341, state 93, "change_slide_pos!1"
+	singlelock.pml:342, state 94, "slide_pos_changed?1"
+	singlelock.pml:346, state 99, "change_doors_pos!1"
+	singlelock.pml:347, state 100, "doors_pos_changed?1"
+	singlelock.pml:352, state 103, "change_slide_pos!1"
+	singlelock.pml:353, state 104, "slide_pos_changed?1"
+	singlelock.pml:338, state 109, "((doors_status.higher==1))"
+	singlelock.pml:338, state 109, "((doors_status.higher==2))"
+	singlelock.pml:362, state 118, "-end-"
 	(15 of 118 states)
 unreached in proctype monitor
-	(0 of 2 states)
+	(0 of 6 states)
 unreached in init
-	singlelock.pml:416, state 26, "ship_pos[proc] = 1"
-	singlelock.pml:417, state 27, "(run ship(proc))"
-	singlelock.pml:418, state 28, "proc = (proc+1)"
-	(3 of 44 states)
+	(0 of 39 states)
+unreached in claim p1
+	_spin_nvr.tmp:10, state 13, "-end-"
+	(1 of 13 states)
+unreached in claim d1
+	_spin_nvr.tmp:19, state 10, "(!((ship_status[0]==2)))"
+	_spin_nvr.tmp:21, state 13, "-end-"
+	(2 of 13 states)
+unreached in claim d2
+	_spin_nvr.tmp:30, state 10, "(!((ship_status[0]==4)))"
+	_spin_nvr.tmp:32, state 13, "-end-"
+	(2 of 13 states)
+unreached in claim reqlow
+	_spin_nvr.tmp:41, state 10, "(!(low_req))"
+	_spin_nvr.tmp:43, state 13, "-end-"
+	(2 of 13 states)
+unreached in claim reqhigh
+	_spin_nvr.tmp:52, state 10, "(!(high_req))"
+	_spin_nvr.tmp:54, state 13, "-end-"
+	(2 of 13 states)
+unreached in claim waterlow
+	_spin_nvr.tmp:63, state 8, "-end-"
+	(1 of 8 states)
+unreached in claim waterhigh
+	_spin_nvr.tmp:72, state 8, "-end-"
+	(1 of 8 states)
 
-pan: elapsed time 0 seconds
+pan: elapsed time 0.01 seconds
 null

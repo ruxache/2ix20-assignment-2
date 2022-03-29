@@ -409,17 +409,12 @@ init {
 		// are initialised. Expand this when more ships should be added.
 		proc = 0;
 		do
-		:: proc <= M / 2 -> 
+		:: proc < M -> 
 			ship_status[proc] = go_up; 
 			ship_pos[proc] = 0;
 			run ship(proc); 
 			proc++;
-		:: proc > M / 2 && proc < M-> 
-			ship_status[proc] = go_down; 
-			ship_pos[proc] = N;
-			run ship(proc); 
-			proc++;
-		:: proc == M -> break;
+		:: proc == M || proc == 4 -> break;
 		od;
 		
 		

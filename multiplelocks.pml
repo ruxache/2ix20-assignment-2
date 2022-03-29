@@ -38,6 +38,8 @@ bool low_req[N], high_req[N];
 
 byte notlast = N-1; // the position N-1. to be used for ltl formulas
 
+byte i = M - 1; // a random lock. to be sued for ltl formulas
+
 // Type for direction of ship.
 mtype:direction = { go_down, go_down_in_lock, go_up, go_up_in_lock, goal_reached };
 
@@ -62,8 +64,8 @@ typedef slides_t {
 }
 
 // Asynchronous channels to handle ship requests.
-chan request_low[N] = [M] of { bool };
-chan request_high[N] = [M] of { bool };
+chan request_low = [M] of { bool, byte };
+chan request_high = [M] of { bool, byte };
 // Synchronous channels to indicate that a ship has seen that a particular pair
 // of doors has opened.
 chan observed_low[N] = [0] of { bool };
@@ -140,8 +142,8 @@ proctype ship(byte shipid) {
 		lockid = ship_pos[shipid] - 1;
 		do
 		:: doors_status[lockid].higher == closed ->
-			request_high[lockid]!true;
-			requested_lock = lockid;
+			request_high!true, lockid;
+
 			high_req[lockid] = true;
 			atomic { doors_status[lockid].higher == open ->
 				if
@@ -164,7 +166,7 @@ proctype ship(byte shipid) {
 	:: ship_status[shipid] == go_down_in_lock ->
 		do
 		:: doors_status[lockid].lower == closed ->
-			request_low[lockid]!true;
+			request_low!true, lockid;
 			requested_lock = lockid;
 			low_req[lockid] = true;
 			atomic { doors_status[lockid].lower == open ->
@@ -194,7 +196,7 @@ proctype ship(byte shipid) {
 		lockid = ship_pos[shipid] + 1;
 		do
 		:: doors_status[lockid].lower == closed ->
-			request_low[lockid]!true;
+			request_low!true, lockid;
 			requested_lock = lockid;
 			low_req[lockid] = true;
 			atomic { doors_status[lockid].lower == open ->
@@ -218,7 +220,7 @@ proctype ship(byte shipid) {
 	:: ship_status[shipid] == go_up_in_lock ->
 		do
 		:: doors_status[lockid].higher == closed ->
-			request_high[lockid]!true;
+			request_high!true, lockid;
 			requested_lock = lockid;
 			high_req[lockid] = true;
 			atomic { doors_status[lockid].higher == open ->
@@ -253,9 +255,9 @@ proctype ship(byte shipid) {
 
 
 proctype main_control() {
-	byte lockid = requested_lock;
+	byte lockid
 	do
-	:: request_low[lockid]?true ->
+	:: request_low?true, lockid ->
 		//(b1) When the lower pair of doors is open, the higher slide is closed.
 
 		if	
@@ -282,7 +284,7 @@ proctype main_control() {
 		fi;
 		observed_low[0]?true;
 
-	:: request_high[lockid]?true ->
+	:: request_high?true, lockid ->
 
 		if
 		:: doors_status[lockid].higher == closed ->
@@ -308,7 +310,7 @@ proctype main_control() {
 		fi;
 		observed_high[lockid]?true;
 
-	:: request_low[lockid]?false ->
+	:: request_low?false, lockid ->
 
 		if
 		:: lock_is_occupied[lockid] ->
@@ -338,7 +340,7 @@ proctype main_control() {
 		:: !lock_is_occupied[lockid] -> skip;
 		fi;
 
-	:: request_high[lockid]?false ->
+	:: request_high?false, lockid ->
 		if
 		:: lock_is_occupied[lockid] ->
 			// HIGHER PART
@@ -422,24 +424,9 @@ init {
 		// are initialised. Expand this when more ships should be added.
 		proc = 0;
 		do
-		:: proc == 0 -> 
+		:: proc < M -> 
 			ship_status[proc] = go_up; 
 			ship_pos[proc] = 0;
-			run ship(proc); 
-			proc++;
-		:: proc % 2 == 0 && proc > 0 && proc < M - 1 ->
-			ship_status[proc] = go_up; 
-			ship_pos[proc] = proc;
-			run ship(proc); 
-			proc++;
-		:: proc % 2 == 1 && proc > 0 && proc < M - 1 ->
-			ship_status[proc] = go_down; 
-			ship_pos[proc] = proc;
-			run ship(proc); 
-			proc++;
-		:: proc == M - 1 -> 
-			ship_status[proc] = go_down; 
-			ship_pos[proc] = N;
 			run ship(proc); 
 			proc++;
 		:: proc == M -> break;

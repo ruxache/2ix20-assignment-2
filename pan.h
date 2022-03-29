@@ -132,20 +132,20 @@ typedef struct S_F_MAP {
 	int upto;
 } S_F_MAP;
 
-#define _nstates3	54	/* :init: */
-#define minseq3	286
-#define maxseq3	338
-#define _endstate3	53
+#define _nstates3	39	/* :init: */
+#define minseq3	285
+#define maxseq3	322
+#define _endstate3	38
 
 #define _nstates2	117	/* main_control */
-#define minseq2	170
-#define maxseq2	285
+#define minseq2	169
+#define maxseq2	284
 #define _endstate2	116
 
-#define _nstates1	121	/* ship */
+#define _nstates1	120	/* ship */
 #define minseq1	50
-#define maxseq1	169
-#define _endstate1	120
+#define maxseq1	168
+#define _endstate1	119
 
 #define _nstates0	51	/* lock */
 #define minseq0	0
@@ -162,8 +162,8 @@ extern S_F_MAP src_file1[];
 extern S_F_MAP src_file0[];
 
 #define T_ID	unsigned short
-#define _T5	179
-#define _T2	180
+#define _T5	169
+#define _T2	170
 #define WS		8 /* word size in bytes */
 #define SYNC	6
 #define ASYNC	2
@@ -437,11 +437,10 @@ typedef struct State {
 	#endif
 #endif
 	uchar lock_is_occupied[3];
-	uchar requested_lock;
 	uchar ship_pos[2];
 	uchar nr_of_ships_at_pos[4];
-	uchar request_low[3];
-	uchar request_high[3];
+	uchar request_low;
+	uchar request_high;
 	uchar observed_low[3];
 	uchar observed_high[3];
 	uchar change_doors_pos[3];
@@ -474,7 +473,9 @@ typedef struct TRIX_v6 {
 #define HAS_TRACK	0
 /* hidden variable: */	uchar low_req[3];
 /* hidden variable: */	uchar high_req[3];
+/* hidden variable: */	uchar requested_lock;
 /* hidden variable: */	uchar notlast;
+/* hidden variable: */	uchar i;
 /* hidden variable: */	uchar lock_water_level[3];
 #define FORWARD_MOVES	"pan.m"
 #define BACKWARD_MOVES	"pan.b"
@@ -484,9 +485,9 @@ typedef struct TRIX_v6 {
 #define _endstate4	2 /* np_ */
 
 #define _start4	0 /* np_ */
-#define _start3	52
+#define _start3	37
 #define _start2	113
-#define _start1	117
+#define _start1	116
 #define _start0	47
 #ifdef NP
 	#define ACCEPT_LAB	1 /* at least 1 in np_ */
@@ -520,35 +521,7 @@ typedef struct TRIX_v6 {
 	#define MEMLIM	(2048)	/* need a default, using 2 GB */
 #endif
 #define PROG_LAB	0 /* progress labels */
-#define NQS	24
-typedef struct Q24 {
-	uchar Qlen;	/* q_size */
-	uchar _t;	/* q_type */
-	struct {
-		uchar fld0;
-	} contents[1];
-} Q24;
-typedef struct Q23 {
-	uchar Qlen;	/* q_size */
-	uchar _t;	/* q_type */
-	struct {
-		uchar fld0;
-	} contents[1];
-} Q23;
-typedef struct Q22 {
-	uchar Qlen;	/* q_size */
-	uchar _t;	/* q_type */
-	struct {
-		uchar fld0;
-	} contents[1];
-} Q22;
-typedef struct Q21 {
-	uchar Qlen;	/* q_size */
-	uchar _t;	/* q_type */
-	struct {
-		uchar fld0;
-	} contents[1];
-} Q21;
+#define NQS	20
 typedef struct Q20 {
 	uchar Qlen;	/* q_size */
 	uchar _t;	/* q_type */
@@ -652,41 +625,43 @@ typedef struct Q6 {
 	uchar _t;	/* q_type */
 	struct {
 		uchar fld0;
-	} contents[2];
+	} contents[1];
 } Q6;
 typedef struct Q5 {
 	uchar Qlen;	/* q_size */
 	uchar _t;	/* q_type */
 	struct {
 		uchar fld0;
-	} contents[2];
+	} contents[1];
 } Q5;
 typedef struct Q4 {
 	uchar Qlen;	/* q_size */
 	uchar _t;	/* q_type */
 	struct {
 		uchar fld0;
-	} contents[2];
+	} contents[1];
 } Q4;
 typedef struct Q3 {
 	uchar Qlen;	/* q_size */
 	uchar _t;	/* q_type */
 	struct {
 		uchar fld0;
-	} contents[2];
+	} contents[1];
 } Q3;
 typedef struct Q2 {
 	uchar Qlen;	/* q_size */
 	uchar _t;	/* q_type */
 	struct {
-		uchar fld0;
+		unsigned fld0 : 1;
+		uchar fld1;
 	} contents[2];
 } Q2;
 typedef struct Q1 {
 	uchar Qlen;	/* q_size */
 	uchar _t;	/* q_type */
 	struct {
-		uchar fld0;
+		unsigned fld0 : 1;
+		uchar fld1;
 	} contents[2];
 } Q1;
 typedef struct Q0 {	/* generic q */
@@ -1003,7 +978,7 @@ typedef struct BFS_State {
 } BFS_State;
 #endif
 
-void qsend(int, int, int, int);
+void qsend(int, int, int, int, int);
 
 #define Addproc(x,y)	addproc(256, y, x, 0)
 #define LOCAL	1
@@ -1015,7 +990,7 @@ void qsend(int, int, int, int);
 #define GLOBAL	7
 #define BAD	8
 #define ALPHA_F	9
-#define NTRANS	181
+#define NTRANS	171
 #if defined(BFS_PAR) || NCORE>1
 	void e_critical(int);
 	void x_critical(int);

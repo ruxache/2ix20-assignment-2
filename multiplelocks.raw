@@ -1,5 +1,5 @@
 Starting main_control with pid 1
-  1:	proc  0 (:init::1) multiplelocks.pml:395 (state 1)	[(run main_control())]
+  1:	proc  0 (:init::1) multiplelocks.pml:404 (state 1)	[(run main_control())]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -8,6 +8,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = 0
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -37,7 +38,7 @@ Starting main_control with pid 1
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  2:	proc  0 (:init::1) multiplelocks.pml:400 (state 2)	[proc = 0]
+  2:	proc  0 (:init::1) multiplelocks.pml:409 (state 2)	[proc = 0]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -46,6 +47,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = 0
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -75,7 +77,7 @@ Starting main_control with pid 1
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  3:	proc  0 (:init::1) multiplelocks.pml:402 (state 3)	[((proc<3))]
+  3:	proc  0 (:init::1) multiplelocks.pml:411 (state 3)	[((proc<3))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -84,6 +86,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = 0
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -113,7 +116,7 @@ Starting main_control with pid 1
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  3:	proc  0 (:init::1) multiplelocks.pml:403 (state 4)	[doors_status[proc].lower = 2]
+  3:	proc  0 (:init::1) multiplelocks.pml:412 (state 4)	[doors_status[proc].lower = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -122,6 +125,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = 0
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -151,7 +155,7 @@ Starting main_control with pid 1
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  3:	proc  0 (:init::1) multiplelocks.pml:404 (state 5)	[doors_status[proc].higher = 2]
+  3:	proc  0 (:init::1) multiplelocks.pml:413 (state 5)	[doors_status[proc].higher = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -160,6 +164,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = 0
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -189,7 +194,7 @@ Starting main_control with pid 1
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  3:	proc  0 (:init::1) multiplelocks.pml:405 (state 6)	[slide_status[proc].lower = 2]
+  3:	proc  0 (:init::1) multiplelocks.pml:414 (state 6)	[slide_status[proc].lower = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -198,6 +203,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = 0
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -227,7 +233,7 @@ Starting main_control with pid 1
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  3:	proc  0 (:init::1) multiplelocks.pml:406 (state 7)	[slide_status[proc].higher = 2]
+  3:	proc  0 (:init::1) multiplelocks.pml:415 (state 7)	[slide_status[proc].higher = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -236,6 +242,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = 0
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -265,7 +272,7 @@ Starting main_control with pid 1
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  3:	proc  0 (:init::1) multiplelocks.pml:407 (state 8)	[lock_water_level[proc] = 1]
+  3:	proc  0 (:init::1) multiplelocks.pml:416 (state 8)	[lock_water_level[proc] = 1]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -274,6 +281,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -303,7 +311,7 @@ Starting main_control with pid 1
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  3:	proc  0 (:init::1) multiplelocks.pml:408 (state 9)	[lock_is_occupied[proc] = 0]
+  3:	proc  0 (:init::1) multiplelocks.pml:417 (state 9)	[lock_is_occupied[proc] = 0]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -312,6 +320,7 @@ Starting main_control with pid 1
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -342,7 +351,7 @@ Starting main_control with pid 1
 		:init:(0):proc = 0
 
 Starting lock with pid 2
-  4:	proc  0 (:init::1) multiplelocks.pml:409 (state 10)	[(run lock(proc))]
+  4:	proc  0 (:init::1) multiplelocks.pml:418 (state 10)	[(run lock(proc))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -351,6 +360,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -380,7 +390,7 @@ Starting lock with pid 2
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
-  5:	proc  0 (:init::1) multiplelocks.pml:410 (state 11)	[proc = (proc+1)]
+  5:	proc  0 (:init::1) multiplelocks.pml:419 (state 11)	[proc = (proc+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -389,6 +399,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -418,7 +429,7 @@ Starting lock with pid 2
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
-  6:	proc  0 (:init::1) multiplelocks.pml:402 (state 3)	[((proc<3))]
+  6:	proc  0 (:init::1) multiplelocks.pml:411 (state 3)	[((proc<3))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -427,6 +438,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -456,7 +468,7 @@ Starting lock with pid 2
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
-  6:	proc  0 (:init::1) multiplelocks.pml:403 (state 4)	[doors_status[proc].lower = 2]
+  6:	proc  0 (:init::1) multiplelocks.pml:412 (state 4)	[doors_status[proc].lower = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -465,6 +477,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -494,7 +507,7 @@ Starting lock with pid 2
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
-  6:	proc  0 (:init::1) multiplelocks.pml:404 (state 5)	[doors_status[proc].higher = 2]
+  6:	proc  0 (:init::1) multiplelocks.pml:413 (state 5)	[doors_status[proc].higher = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -503,6 +516,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -532,7 +546,7 @@ Starting lock with pid 2
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
-  6:	proc  0 (:init::1) multiplelocks.pml:405 (state 6)	[slide_status[proc].lower = 2]
+  6:	proc  0 (:init::1) multiplelocks.pml:414 (state 6)	[slide_status[proc].lower = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -541,6 +555,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -570,7 +585,7 @@ Starting lock with pid 2
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
-  6:	proc  0 (:init::1) multiplelocks.pml:406 (state 7)	[slide_status[proc].higher = 2]
+  6:	proc  0 (:init::1) multiplelocks.pml:415 (state 7)	[slide_status[proc].higher = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -579,6 +594,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = 0
 		lock_water_level[2] = 0
@@ -608,7 +624,7 @@ Starting lock with pid 2
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
-  6:	proc  0 (:init::1) multiplelocks.pml:407 (state 8)	[lock_water_level[proc] = 1]
+  6:	proc  0 (:init::1) multiplelocks.pml:416 (state 8)	[lock_water_level[proc] = 1]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -617,6 +633,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -646,7 +663,7 @@ Starting lock with pid 2
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
-  6:	proc  0 (:init::1) multiplelocks.pml:408 (state 9)	[lock_is_occupied[proc] = 0]
+  6:	proc  0 (:init::1) multiplelocks.pml:417 (state 9)	[lock_is_occupied[proc] = 0]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -655,6 +672,7 @@ Starting lock with pid 2
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -685,7 +703,7 @@ Starting lock with pid 2
 		:init:(0):proc = 1
 
 Starting lock with pid 3
-  7:	proc  0 (:init::1) multiplelocks.pml:409 (state 10)	[(run lock(proc))]
+  7:	proc  0 (:init::1) multiplelocks.pml:418 (state 10)	[(run lock(proc))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -694,6 +712,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -723,7 +742,7 @@ Starting lock with pid 3
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
-  8:	proc  0 (:init::1) multiplelocks.pml:410 (state 11)	[proc = (proc+1)]
+  8:	proc  0 (:init::1) multiplelocks.pml:419 (state 11)	[proc = (proc+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -732,6 +751,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -761,7 +781,7 @@ Starting lock with pid 3
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
-  9:	proc  0 (:init::1) multiplelocks.pml:402 (state 3)	[((proc<3))]
+  9:	proc  0 (:init::1) multiplelocks.pml:411 (state 3)	[((proc<3))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -770,6 +790,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -799,7 +820,7 @@ Starting lock with pid 3
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
-  9:	proc  0 (:init::1) multiplelocks.pml:403 (state 4)	[doors_status[proc].lower = 2]
+  9:	proc  0 (:init::1) multiplelocks.pml:412 (state 4)	[doors_status[proc].lower = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -808,6 +829,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -837,7 +859,7 @@ Starting lock with pid 3
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
-  9:	proc  0 (:init::1) multiplelocks.pml:404 (state 5)	[doors_status[proc].higher = 2]
+  9:	proc  0 (:init::1) multiplelocks.pml:413 (state 5)	[doors_status[proc].higher = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -846,6 +868,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -875,7 +898,7 @@ Starting lock with pid 3
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
-  9:	proc  0 (:init::1) multiplelocks.pml:405 (state 6)	[slide_status[proc].lower = 2]
+  9:	proc  0 (:init::1) multiplelocks.pml:414 (state 6)	[slide_status[proc].lower = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -884,6 +907,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -913,7 +937,7 @@ Starting lock with pid 3
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
-  9:	proc  0 (:init::1) multiplelocks.pml:406 (state 7)	[slide_status[proc].higher = 2]
+  9:	proc  0 (:init::1) multiplelocks.pml:415 (state 7)	[slide_status[proc].higher = 2]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -922,6 +946,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = 0
@@ -951,7 +976,7 @@ Starting lock with pid 3
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
-  9:	proc  0 (:init::1) multiplelocks.pml:407 (state 8)	[lock_water_level[proc] = 1]
+  9:	proc  0 (:init::1) multiplelocks.pml:416 (state 8)	[lock_water_level[proc] = 1]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -960,6 +985,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -989,7 +1015,7 @@ Starting lock with pid 3
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
-  9:	proc  0 (:init::1) multiplelocks.pml:408 (state 9)	[lock_is_occupied[proc] = 0]
+  9:	proc  0 (:init::1) multiplelocks.pml:417 (state 9)	[lock_is_occupied[proc] = 0]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -998,6 +1024,7 @@ Starting lock with pid 3
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1028,7 +1055,7 @@ Starting lock with pid 3
 		:init:(0):proc = 2
 
 Starting lock with pid 4
- 10:	proc  0 (:init::1) multiplelocks.pml:409 (state 10)	[(run lock(proc))]
+ 10:	proc  0 (:init::1) multiplelocks.pml:418 (state 10)	[(run lock(proc))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1037,6 +1064,7 @@ Starting lock with pid 4
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1066,7 +1094,7 @@ Starting lock with pid 4
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
- 11:	proc  0 (:init::1) multiplelocks.pml:410 (state 11)	[proc = (proc+1)]
+ 11:	proc  0 (:init::1) multiplelocks.pml:419 (state 11)	[proc = (proc+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1075,6 +1103,7 @@ Starting lock with pid 4
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1104,7 +1133,7 @@ Starting lock with pid 4
 		:init:(0):lockid = 0
 		:init:(0):proc = 3
 
- 12:	proc  0 (:init::1) multiplelocks.pml:411 (state 12)	[((proc==3))]
+ 12:	proc  0 (:init::1) multiplelocks.pml:420 (state 12)	[((proc==3))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1113,6 +1142,7 @@ Starting lock with pid 4
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1142,7 +1172,7 @@ Starting lock with pid 4
 		:init:(0):lockid = 0
 		:init:(0):proc = 3
 
- 12:	proc  0 (:init::1) multiplelocks.pml:416 (state 17)	[proc = 0]
+ 12:	proc  0 (:init::1) multiplelocks.pml:425 (state 17)	[proc = 0]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1151,6 +1181,7 @@ Starting lock with pid 4
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1180,7 +1211,7 @@ Starting lock with pid 4
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
- 13:	proc  0 (:init::1) multiplelocks.pml:418 (state 18)	[((proc==0))]
+ 13:	proc  0 (:init::1) multiplelocks.pml:427 (state 18)	[((proc<2))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1189,6 +1220,7 @@ Starting lock with pid 4
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1218,7 +1250,7 @@ Starting lock with pid 4
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
- 13:	proc  0 (:init::1) multiplelocks.pml:419 (state 19)	[ship_status[proc] = 3]
+ 13:	proc  0 (:init::1) multiplelocks.pml:428 (state 19)	[ship_status[proc] = 3]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1227,6 +1259,7 @@ Starting lock with pid 4
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1256,7 +1289,7 @@ Starting lock with pid 4
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
- 13:	proc  0 (:init::1) multiplelocks.pml:420 (state 20)	[ship_pos[proc] = 0]
+ 13:	proc  0 (:init::1) multiplelocks.pml:429 (state 20)	[ship_pos[proc] = 0]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1265,6 +1298,7 @@ Starting lock with pid 4
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1295,7 +1329,7 @@ Starting lock with pid 4
 		:init:(0):proc = 0
 
 Starting ship with pid 5
- 14:	proc  0 (:init::1) multiplelocks.pml:421 (state 21)	[(run ship(proc))]
+ 14:	proc  0 (:init::1) multiplelocks.pml:430 (state 21)	[(run ship(proc))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1304,6 +1338,7 @@ Starting ship with pid 5
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1333,7 +1368,7 @@ Starting ship with pid 5
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
- 15:	proc  0 (:init::1) multiplelocks.pml:422 (state 22)	[proc = (proc+1)]
+ 15:	proc  0 (:init::1) multiplelocks.pml:431 (state 22)	[proc = (proc+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1342,6 +1377,7 @@ Starting ship with pid 5
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1371,7 +1407,7 @@ Starting ship with pid 5
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
- 16:	proc  0 (:init::1) multiplelocks.pml:433 (state 33)	[((proc==(2-1)))]
+ 16:	proc  0 (:init::1) multiplelocks.pml:427 (state 18)	[((proc<2))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1380,6 +1416,7 @@ Starting ship with pid 5
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1409,7 +1446,7 @@ Starting ship with pid 5
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
- 16:	proc  0 (:init::1) multiplelocks.pml:434 (state 34)	[ship_status[proc] = 5]
+ 16:	proc  0 (:init::1) multiplelocks.pml:428 (state 19)	[ship_status[proc] = 3]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1418,6 +1455,7 @@ Starting ship with pid 5
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1425,7 +1463,7 @@ Starting ship with pid 5
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
 		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 0
@@ -1447,7 +1485,7 @@ Starting ship with pid 5
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
- 16:	proc  0 (:init::1) multiplelocks.pml:435 (state 35)	[ship_pos[proc] = 3]
+ 16:	proc  0 (:init::1) multiplelocks.pml:429 (state 20)	[ship_pos[proc] = 0]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1456,6 +1494,7 @@ Starting ship with pid 5
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1463,9 +1502,9 @@ Starting ship with pid 5
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 0
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1486,7 +1525,7 @@ Starting ship with pid 5
 		:init:(0):proc = 1
 
 Starting ship with pid 6
- 17:	proc  0 (:init::1) multiplelocks.pml:436 (state 36)	[(run ship(proc))]
+ 17:	proc  0 (:init::1) multiplelocks.pml:430 (state 21)	[(run ship(proc))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1495,6 +1534,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1502,9 +1542,9 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 0
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1524,7 +1564,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
- 18:	proc  0 (:init::1) multiplelocks.pml:437 (state 37)	[proc = (proc+1)]
+ 18:	proc  0 (:init::1) multiplelocks.pml:431 (state 22)	[proc = (proc+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1533,6 +1573,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1540,9 +1581,9 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 0
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1562,7 +1603,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
- 19:	proc  0 (:init::1) multiplelocks.pml:438 (state 38)	[((proc==2))]
+ 19:	proc  0 (:init::1) multiplelocks.pml:432 (state 23)	[((proc==2))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1571,6 +1612,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1578,9 +1620,9 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 0
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1600,7 +1642,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
- 19:	proc  0 (:init::1) multiplelocks.pml:443 (state 43)	[proc = 0]
+ 19:	proc  0 (:init::1) multiplelocks.pml:437 (state 28)	[proc = 0]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1609,6 +1651,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1616,9 +1659,9 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 0
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1638,7 +1681,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
- 20:	proc  0 (:init::1) multiplelocks.pml:445 (state 44)	[((proc<2))]
+ 20:	proc  0 (:init::1) multiplelocks.pml:439 (state 29)	[((proc<2))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1647,6 +1690,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1654,9 +1698,9 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 0
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1676,7 +1720,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
- 20:	proc  0 (:init::1) multiplelocks.pml:445 (state 45)	[nr_of_ships_at_pos[ship_pos[proc]] = (nr_of_ships_at_pos[ship_pos[proc]]+1)]
+ 20:	proc  0 (:init::1) multiplelocks.pml:439 (state 30)	[nr_of_ships_at_pos[ship_pos[proc]] = (nr_of_ships_at_pos[ship_pos[proc]]+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1685,6 +1729,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1692,9 +1737,9 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 1
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1714,7 +1759,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 0
 
- 20:	proc  0 (:init::1) multiplelocks.pml:445 (state 46)	[proc = (proc+1)]
+ 20:	proc  0 (:init::1) multiplelocks.pml:439 (state 31)	[proc = (proc+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1723,6 +1768,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1730,9 +1776,9 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 1
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1752,7 +1798,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
- 21:	proc  0 (:init::1) multiplelocks.pml:445 (state 44)	[((proc<2))]
+ 21:	proc  0 (:init::1) multiplelocks.pml:439 (state 29)	[((proc<2))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1761,6 +1807,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1768,9 +1815,9 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 1
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
@@ -1790,7 +1837,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
- 21:	proc  0 (:init::1) multiplelocks.pml:445 (state 45)	[nr_of_ships_at_pos[ship_pos[proc]] = (nr_of_ships_at_pos[ship_pos[proc]]+1)]
+ 21:	proc  0 (:init::1) multiplelocks.pml:439 (state 30)	[nr_of_ships_at_pos[ship_pos[proc]] = (nr_of_ships_at_pos[ship_pos[proc]]+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1799,6 +1846,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1806,13 +1854,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -1828,7 +1876,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 1
 
- 21:	proc  0 (:init::1) multiplelocks.pml:445 (state 46)	[proc = (proc+1)]
+ 21:	proc  0 (:init::1) multiplelocks.pml:439 (state 31)	[proc = (proc+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1837,6 +1885,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1844,13 +1893,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -1866,7 +1915,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
- 22:	proc  0 (:init::1) multiplelocks.pml:446 (state 47)	[else]
+ 22:	proc  0 (:init::1) multiplelocks.pml:440 (state 32)	[else]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1875,6 +1924,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1882,13 +1932,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -1904,7 +1954,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
- 23:	proc  0 (:init::1) multiplelocks.pml:446 (state 48)	[goto :b9]
+ 23:	proc  0 (:init::1) multiplelocks.pml:440 (state 33)	[goto :b9]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1913,6 +1963,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1920,13 +1971,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -1942,7 +1993,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
- 24:	proc  0 (:init::1) multiplelocks.pml:444 (state 51)	[break]
+ 24:	proc  0 (:init::1) multiplelocks.pml:438 (state 36)	[break]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1951,6 +2002,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1958,13 +2010,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -1980,7 +2032,7 @@ Starting ship with pid 6
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 
- 25:	proc  6 (ship:1) multiplelocks.pml:132 (state 1)	[(((ship_status[shipid]==5)&&(ship_pos[shipid]!=0)))]
+ 25:	proc  6 (ship:1) multiplelocks.pml:195 (state 55)	[(((ship_status[shipid]==3)&&(ship_pos[shipid]!=3)))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -1989,6 +2041,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -1996,13 +2049,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -2018,7 +2071,7 @@ Starting ship with pid 6
 		ship(6):lockid = 0
 		ship(6):shipid = 1
 
- 26:	proc  6 (ship:1) multiplelocks.pml:133 (state 2)	[lockid = (ship_pos[shipid]-1)]
+ 26:	proc  6 (ship:1) multiplelocks.pml:196 (state 56)	[lockid = (ship_pos[shipid]+1)]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -2027,6 +2080,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -2034,13 +2088,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -2053,10 +2107,10 @@ Starting ship with pid 6
 		slide_status[1].higher = closed
 		slide_status[2].lower = closed
 		slide_status[2].higher = closed
-		ship(6):lockid = 2
+		ship(6):lockid = 1
 		ship(6):shipid = 1
 
- 27:	proc  6 (ship:1) multiplelocks.pml:135 (state 3)	[((doors_status[lockid].higher==2))]
+ 27:	proc  6 (ship:1) multiplelocks.pml:198 (state 57)	[((doors_status[lockid].lower==2))]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -2065,6 +2119,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -2072,13 +2127,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -2091,11 +2146,11 @@ Starting ship with pid 6
 		slide_status[1].higher = closed
 		slide_status[2].lower = closed
 		slide_status[2].higher = closed
-		ship(6):lockid = 2
+		ship(6):lockid = 1
 		ship(6):shipid = 1
 
- 28:	proc  6 (ship:1) multiplelocks.pml:136 (state -)	[values: 3!1]
- 28:	proc  6 (ship:1) multiplelocks.pml:136 (state 4)	[request_high[lockid]!1]
+ 28:	proc  6 (ship:1) multiplelocks.pml:199 (state -)	[values: 1!1,1]
+ 28:	proc  6 (ship:1) multiplelocks.pml:199 (state 58)	[request_low!1,lockid]
 		requested_lock = 0
 		low_req[0] = 0
 		low_req[1] = 0
@@ -2104,9 +2159,8 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
-		queue 1 (request_high[0]): 
-		queue 2 (request_high[1]): 
-		queue 3 (request_high[2]): [1]
+		i = 1
+		queue 1 (request_low): [1,1]
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -2114,13 +2168,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -2133,11 +2187,11 @@ Starting ship with pid 6
 		slide_status[1].higher = closed
 		slide_status[2].lower = closed
 		slide_status[2].higher = closed
-		ship(6):lockid = 2
+		ship(6):lockid = 1
 		ship(6):shipid = 1
 
- 29:	proc  6 (ship:1) multiplelocks.pml:137 (state 5)	[requested_lock = lockid]
-		requested_lock = 2
+ 29:	proc  6 (ship:1) multiplelocks.pml:200 (state 59)	[requested_lock = lockid]
+		requested_lock = 1
 		low_req[0] = 0
 		low_req[1] = 0
 		low_req[2] = 0
@@ -2145,6 +2199,7 @@ Starting ship with pid 6
 		high_req[1] = 0
 		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -2152,13 +2207,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -2171,18 +2226,19 @@ Starting ship with pid 6
 		slide_status[1].higher = closed
 		slide_status[2].lower = closed
 		slide_status[2].higher = closed
-		ship(6):lockid = 2
+		ship(6):lockid = 1
 		ship(6):shipid = 1
 
- 30:	proc  6 (ship:1) multiplelocks.pml:138 (state 6)	[high_req[lockid] = 1]
-		requested_lock = 2
+ 30:	proc  6 (ship:1) multiplelocks.pml:201 (state 60)	[low_req[lockid] = 1]
+		requested_lock = 1
 		low_req[0] = 0
-		low_req[1] = 0
+		low_req[1] = 1
 		low_req[2] = 0
 		high_req[0] = 0
 		high_req[1] = 0
-		high_req[2] = 1
+		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -2190,13 +2246,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -2209,18 +2265,19 @@ Starting ship with pid 6
 		slide_status[1].higher = closed
 		slide_status[2].lower = closed
 		slide_status[2].higher = closed
-		ship(6):lockid = 2
+		ship(6):lockid = 1
 		ship(6):shipid = 1
 
- 31:	proc  5 (ship:1) multiplelocks.pml:186 (state 56)	[(((ship_status[shipid]==3)&&(ship_pos[shipid]!=3)))]
-		requested_lock = 2
+ 31:	proc  5 (ship:1) multiplelocks.pml:195 (state 55)	[(((ship_status[shipid]==3)&&(ship_pos[shipid]!=3)))]
+		requested_lock = 1
 		low_req[0] = 0
-		low_req[1] = 0
+		low_req[1] = 1
 		low_req[2] = 0
 		high_req[0] = 0
 		high_req[1] = 0
-		high_req[2] = 1
+		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -2228,13 +2285,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -2250,171 +2307,16 @@ Starting ship with pid 6
 		ship(5):lockid = 0
 		ship(5):shipid = 0
 
- 32:	proc  5 (ship:1) multiplelocks.pml:187 (state 57)	[lockid = (ship_pos[shipid]+1)]
-		requested_lock = 2
-		low_req[0] = 0
-		low_req[1] = 0
-		low_req[2] = 0
-		high_req[0] = 0
-		high_req[1] = 0
-		high_req[2] = 1
-		notlast = 2
-		lock_water_level[0] = high_level
-		lock_water_level[1] = high_level
-		lock_water_level[2] = high_level
-		lock_is_occupied[0] = 0
-		lock_is_occupied[1] = 0
-		lock_is_occupied[2] = 0
-		ship_status[0] = go_up
-		ship_status[1] = go_down
-		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
-		nr_of_ships_at_pos[1] = 0
-		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
-		doors_status[0].lower = closed
-		doors_status[0].higher = closed
-		doors_status[1].lower = closed
-		doors_status[1].higher = closed
-		doors_status[2].lower = closed
-		doors_status[2].higher = closed
-		slide_status[0].lower = closed
-		slide_status[0].higher = closed
-		slide_status[1].lower = closed
-		slide_status[1].higher = closed
-		slide_status[2].lower = closed
-		slide_status[2].higher = closed
-		ship(5):lockid = 1
-		ship(5):shipid = 0
-
- 33:	proc  5 (ship:1) multiplelocks.pml:189 (state 58)	[((doors_status[lockid].lower==2))]
-		requested_lock = 2
-		low_req[0] = 0
-		low_req[1] = 0
-		low_req[2] = 0
-		high_req[0] = 0
-		high_req[1] = 0
-		high_req[2] = 1
-		notlast = 2
-		lock_water_level[0] = high_level
-		lock_water_level[1] = high_level
-		lock_water_level[2] = high_level
-		lock_is_occupied[0] = 0
-		lock_is_occupied[1] = 0
-		lock_is_occupied[2] = 0
-		ship_status[0] = go_up
-		ship_status[1] = go_down
-		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
-		nr_of_ships_at_pos[1] = 0
-		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
-		doors_status[0].lower = closed
-		doors_status[0].higher = closed
-		doors_status[1].lower = closed
-		doors_status[1].higher = closed
-		doors_status[2].lower = closed
-		doors_status[2].higher = closed
-		slide_status[0].lower = closed
-		slide_status[0].higher = closed
-		slide_status[1].lower = closed
-		slide_status[1].higher = closed
-		slide_status[2].lower = closed
-		slide_status[2].higher = closed
-		ship(5):lockid = 1
-		ship(5):shipid = 0
-
- 34:	proc  5 (ship:1) multiplelocks.pml:190 (state -)	[values: 5!1]
- 34:	proc  5 (ship:1) multiplelocks.pml:190 (state 59)	[request_low[lockid]!1]
-		requested_lock = 2
-		low_req[0] = 0
-		low_req[1] = 0
-		low_req[2] = 0
-		high_req[0] = 0
-		high_req[1] = 0
-		high_req[2] = 1
-		notlast = 2
-		queue 4 (request_low[0]): 
-		queue 5 (request_low[1]): [1]
-		queue 6 (request_low[2]): 
-		lock_water_level[0] = high_level
-		lock_water_level[1] = high_level
-		lock_water_level[2] = high_level
-		lock_is_occupied[0] = 0
-		lock_is_occupied[1] = 0
-		lock_is_occupied[2] = 0
-		ship_status[0] = go_up
-		ship_status[1] = go_down
-		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
-		nr_of_ships_at_pos[1] = 0
-		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
-		doors_status[0].lower = closed
-		doors_status[0].higher = closed
-		doors_status[1].lower = closed
-		doors_status[1].higher = closed
-		doors_status[2].lower = closed
-		doors_status[2].higher = closed
-		slide_status[0].lower = closed
-		slide_status[0].higher = closed
-		slide_status[1].lower = closed
-		slide_status[1].higher = closed
-		slide_status[2].lower = closed
-		slide_status[2].higher = closed
-		ship(5):lockid = 1
-		ship(5):shipid = 0
-
- 35:	proc  5 (ship:1) multiplelocks.pml:191 (state 60)	[requested_lock = lockid]
-		requested_lock = 1
-		low_req[0] = 0
-		low_req[1] = 0
-		low_req[2] = 0
-		high_req[0] = 0
-		high_req[1] = 0
-		high_req[2] = 1
-		notlast = 2
-		lock_water_level[0] = high_level
-		lock_water_level[1] = high_level
-		lock_water_level[2] = high_level
-		lock_is_occupied[0] = 0
-		lock_is_occupied[1] = 0
-		lock_is_occupied[2] = 0
-		ship_status[0] = go_up
-		ship_status[1] = go_down
-		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
-		nr_of_ships_at_pos[1] = 0
-		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
-		doors_status[0].lower = closed
-		doors_status[0].higher = closed
-		doors_status[1].lower = closed
-		doors_status[1].higher = closed
-		doors_status[2].lower = closed
-		doors_status[2].higher = closed
-		slide_status[0].lower = closed
-		slide_status[0].higher = closed
-		slide_status[1].lower = closed
-		slide_status[1].higher = closed
-		slide_status[2].lower = closed
-		slide_status[2].higher = closed
-		ship(5):lockid = 1
-		ship(5):shipid = 0
-
- 36:	proc  5 (ship:1) multiplelocks.pml:192 (state 61)	[low_req[lockid] = 1]
+ 32:	proc  5 (ship:1) multiplelocks.pml:196 (state 56)	[lockid = (ship_pos[shipid]+1)]
 		requested_lock = 1
 		low_req[0] = 0
 		low_req[1] = 1
 		low_req[2] = 0
 		high_req[0] = 0
 		high_req[1] = 0
-		high_req[2] = 1
+		high_req[2] = 0
 		notlast = 2
+		i = 1
 		lock_water_level[0] = high_level
 		lock_water_level[1] = high_level
 		lock_water_level[2] = high_level
@@ -2422,13 +2324,13 @@ Starting ship with pid 6
 		lock_is_occupied[1] = 0
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up
 		ship_pos[0] = 0
-		ship_pos[1] = 3
-		nr_of_ships_at_pos[0] = 1
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
 		doors_status[1].lower = closed
@@ -2444,7 +2346,1245 @@ Starting ship with pid 6
 		ship(5):lockid = 1
 		ship(5):shipid = 0
 
-spin: trail ends after 36 steps
+ 33:	proc  5 (ship:1) multiplelocks.pml:198 (state 57)	[((doors_status[lockid].lower==2))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(5):lockid = 1
+		ship(5):shipid = 0
+
+,1,1 34:	proc  5 (ship:1) multiplelocks.pml:199 (state 58)	[request_low!1,lockid]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		queue 1 (request_low): [1,1][1,1]
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(5):lockid = 1
+		ship(5):shipid = 0
+
+ 35:	proc  5 (ship:1) multiplelocks.pml:200 (state 59)	[requested_lock = lockid]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(5):lockid = 1
+		ship(5):shipid = 0
+
+ 36:	proc  5 (ship:1) multiplelocks.pml:201 (state 60)	[low_req[lockid] = 1]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(5):lockid = 1
+		ship(5):shipid = 0
+
+ 37:	proc  1 (main_control:1) multiplelocks.pml:260 (state -)	[values: 1?1,1]
+ 37:	proc  1 (main_control:1) multiplelocks.pml:260 (state 1)	[request_low?1,lockid]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		queue 1 (request_low): [1,1]
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 38:	proc  1 (main_control:1) multiplelocks.pml:264 (state 2)	[((doors_status[lockid].lower==2))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 39:	proc  1 (main_control:1) multiplelocks.pml:268 (state 6)	[((slide_status[lockid].higher==2))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 40:	proc  1 (main_control:1) multiplelocks.pml:268 (state 7)	[(1)]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 41:	proc  1 (main_control:1) multiplelocks.pml:274 (state 13)	[((doors_status[lockid].higher==2))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 42:	proc  1 (main_control:1) multiplelocks.pml:274 (state 14)	[(1)]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 43:	proc  1 (main_control:1) multiplelocks.pml:278 (state 17)	[((slide_status[lockid].lower==2))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 44:	proc  1 (main_control:1) multiplelocks.pml:279 (state -)	[values: 3!low]
+ 44:	proc  1 (main_control:1) multiplelocks.pml:279 (state 18)	[change_slide_pos[lockid]!2]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 45:	proc  3 (lock:1) multiplelocks.pml:115 (state -)	[values: 3?low]
+ 45:	proc  3 (lock:1) multiplelocks.pml:115 (state 24)	[change_slide_pos[lockid]?2]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 46:	proc  3 (lock:1) multiplelocks.pml:117 (state 25)	[((slide_status[lockid].lower==2))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = closed
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 47:	proc  3 (lock:1) multiplelocks.pml:117 (state 26)	[slide_status[lockid].lower = 1]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = high_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 48:	proc  3 (lock:1) multiplelocks.pml:118 (state 27)	[lock_water_level[lockid] = 2]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 49:	proc  3 (lock:1) multiplelocks.pml:121 (state -)	[values: 6!1]
+ 49:	proc  3 (lock:1) multiplelocks.pml:121 (state 32)	[slide_pos_changed[lockid]!1]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 50:	proc  1 (main_control:1) multiplelocks.pml:279 (state -)	[values: 6?1]
+ 50:	proc  1 (main_control:1) multiplelocks.pml:279 (state 19)	[slide_pos_changed[lockid]?1]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 51:	proc  1 (main_control:1) multiplelocks.pml:282 (state -)	[values: 9!low]
+ 51:	proc  1 (main_control:1) multiplelocks.pml:282 (state 24)	[change_doors_pos[lockid]!2]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+ 52:	proc  3 (lock:1) multiplelocks.pml:97 (state -)	[values: 9?low]
+ 52:	proc  3 (lock:1) multiplelocks.pml:97 (state 1)	[change_doors_pos[lockid]?2]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 53:	proc  3 (lock:1) multiplelocks.pml:99 (state 2)	[((doors_status[lockid].lower==2))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = closed
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 54:	proc  3 (lock:1) multiplelocks.pml:99 (state 3)	[doors_status[lockid].lower = 1]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 55:	proc  6 (ship:1) multiplelocks.pml:202 (state 61)	[((doors_status[lockid].lower==1))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(6):lockid = 1
+		ship(6):shipid = 1
+
+ 56:	proc  6 (ship:1) multiplelocks.pml:204 (state 62)	[(!(lock_is_occupied[lockid]))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(6):lockid = 1
+		ship(6):shipid = 1
+
+ 56:	proc  6 (ship:1) multiplelocks.pml:205 (state 63)	[ship_status[shipid] = 2]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 0
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up_in_lock
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(6):lockid = 1
+		ship(6):shipid = 1
+
+ 56:	proc  6 (ship:1) multiplelocks.pml:206 (state 64)	[lock_is_occupied[lockid] = 1]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 1
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up_in_lock
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 2
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(6):lockid = 1
+		ship(6):shipid = 1
+
+ 56:	proc  6 (ship:1) multiplelocks.pml:207 (state 65)	[nr_of_ships_at_pos[ship_pos[shipid]] = (nr_of_ships_at_pos[ship_pos[shipid]]-1)]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 1
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up_in_lock
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 1
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(6):lockid = 1
+		ship(6):shipid = 1
+
+ 57:	proc  5 (ship:1) multiplelocks.pml:202 (state 61)	[((doors_status[lockid].lower==1))]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 1
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up_in_lock
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 1
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(5):lockid = 1
+		ship(5):shipid = 0
+
+ 58:	proc  5 (ship:1) multiplelocks.pml:210 (state 68)	[(lock_is_occupied[lockid])]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 1
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up_in_lock
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 1
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		ship(5):lockid = 1
+		ship(5):shipid = 0
+
+ 59:	proc  3 (lock:1) multiplelocks.pml:100 (state 4)	[lock_water_level[lockid] = 2]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 1
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up_in_lock
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 1
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 60:	proc  3 (lock:1) multiplelocks.pml:103 (state -)	[values: 12!1]
+ 60:	proc  3 (lock:1) multiplelocks.pml:103 (state 9)	[doors_pos_changed[lockid]!1]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 1
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up_in_lock
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 1
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		lock(3):lockid = 1
+
+ 61:	proc  1 (main_control:1) multiplelocks.pml:282 (state -)	[values: 12?1]
+ 61:	proc  1 (main_control:1) multiplelocks.pml:282 (state 25)	[doors_pos_changed[lockid]?1]
+		requested_lock = 1
+		low_req[0] = 0
+		low_req[1] = 1
+		low_req[2] = 0
+		high_req[0] = 0
+		high_req[1] = 0
+		high_req[2] = 0
+		notlast = 2
+		i = 1
+		lock_water_level[0] = high_level
+		lock_water_level[1] = low_level
+		lock_water_level[2] = high_level
+		lock_is_occupied[0] = 0
+		lock_is_occupied[1] = 1
+		lock_is_occupied[2] = 0
+		ship_status[0] = go_up
+		ship_status[1] = go_up_in_lock
+		ship_pos[0] = 0
+		ship_pos[1] = 0
+		nr_of_ships_at_pos[0] = 1
+		nr_of_ships_at_pos[1] = 0
+		nr_of_ships_at_pos[2] = 0
+		nr_of_ships_at_pos[3] = 0
+		doors_status[0].lower = closed
+		doors_status[0].higher = closed
+		doors_status[1].lower = open
+		doors_status[1].higher = closed
+		doors_status[2].lower = closed
+		doors_status[2].higher = closed
+		slide_status[0].lower = closed
+		slide_status[0].higher = closed
+		slide_status[1].lower = open
+		slide_status[1].higher = closed
+		slide_status[2].lower = closed
+		slide_status[2].higher = closed
+		main_control(1):lockid = 1
+
+spin: trail ends after 61 steps
 #processes: 7
 		requested_lock = 1
 		low_req[0] = 0
@@ -2452,55 +3592,51 @@ spin: trail ends after 36 steps
 		low_req[2] = 0
 		high_req[0] = 0
 		high_req[1] = 0
-		high_req[2] = 1
+		high_req[2] = 0
 		notlast = 2
-		queue 4 (request_low[0]): 
-		queue 5 (request_low[1]): [1]
-		queue 6 (request_low[2]): 
-		queue 1 (request_high[0]): 
-		queue 2 (request_high[1]): 
-		queue 3 (request_high[2]): [1]
+		i = 1
+		queue 1 (request_low): [1,1]
 		lock_water_level[0] = high_level
-		lock_water_level[1] = high_level
+		lock_water_level[1] = low_level
 		lock_water_level[2] = high_level
 		lock_is_occupied[0] = 0
-		lock_is_occupied[1] = 0
+		lock_is_occupied[1] = 1
 		lock_is_occupied[2] = 0
 		ship_status[0] = go_up
-		ship_status[1] = go_down
+		ship_status[1] = go_up_in_lock
 		ship_pos[0] = 0
-		ship_pos[1] = 3
+		ship_pos[1] = 0
 		nr_of_ships_at_pos[0] = 1
 		nr_of_ships_at_pos[1] = 0
 		nr_of_ships_at_pos[2] = 0
-		nr_of_ships_at_pos[3] = 1
+		nr_of_ships_at_pos[3] = 0
 		doors_status[0].lower = closed
 		doors_status[0].higher = closed
-		doors_status[1].lower = closed
+		doors_status[1].lower = open
 		doors_status[1].higher = closed
 		doors_status[2].lower = closed
 		doors_status[2].higher = closed
 		slide_status[0].lower = closed
 		slide_status[0].higher = closed
-		slide_status[1].lower = closed
+		slide_status[1].lower = open
 		slide_status[1].higher = closed
 		slide_status[2].lower = closed
 		slide_status[2].higher = closed
- 36:	proc  6 (ship:1) multiplelocks.pml:139 (state 18)
-		ship(6):lockid = 2
+ 61:	proc  6 (ship:1) multiplelocks.pml:208 (state 66)
+		ship(6):lockid = 1
 		ship(6):shipid = 1
- 36:	proc  5 (ship:1) multiplelocks.pml:193 (state 73)
+ 61:	proc  5 (ship:1) multiplelocks.pml:211 (state 69)
 		ship(5):lockid = 1
 		ship(5):shipid = 0
- 36:	proc  4 (lock:1) multiplelocks.pml:87 (state 47)
+ 61:	proc  4 (lock:1) multiplelocks.pml:96 (state 47)
 		lock(4):lockid = 2
- 36:	proc  3 (lock:1) multiplelocks.pml:87 (state 47)
+ 61:	proc  3 (lock:1) multiplelocks.pml:96 (state 47)
 		lock(3):lockid = 1
- 36:	proc  2 (lock:1) multiplelocks.pml:87 (state 47)
+ 61:	proc  2 (lock:1) multiplelocks.pml:96 (state 47)
 		lock(2):lockid = 0
- 36:	proc  1 (main_control:1) multiplelocks.pml:250 (state 113)
-		main_control(1):lockid = 0
- 36:	proc  0 (:init::1) multiplelocks.pml:449 (state 53)
+ 61:	proc  1 (main_control:1) multiplelocks.pml:285 (state 30)
+		main_control(1):lockid = 1
+ 61:	proc  0 (:init::1) multiplelocks.pml:443 (state 38)
 		:init:(0):lockid = 0
 		:init:(0):proc = 2
 7 processes created
