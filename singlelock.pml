@@ -414,7 +414,7 @@ init {
 			ship_pos[proc] = 0;
 			run ship(proc); 
 			proc++;
-		:: proc == M || proc == 4 -> break;
+		:: proc == M -> break;
 		od;
 		
 		
