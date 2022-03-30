@@ -136,10 +136,10 @@ proctype lock(byte lockid) {
 // Ship process type. Based on its direction and position, it makes requests to open doors,
 // and moves when possible.
 proctype ship(byte shipid) {
-	byte lockid = ship_pos[shipid];
+	byte lockid;
 	do
 	:: ship_status[shipid] == go_down && ship_pos[shipid] != 0 ->
-		lockid = lockid - 1;
+		lockid = ship_pos[shipid] - 1;
 		do
 		:: doors_status[lockid].higher == closed ->
 			request_high!true, lockid;
@@ -193,6 +193,7 @@ proctype ship(byte shipid) {
 				break; }
 		od;
 	:: ship_status[shipid] == go_up && ship_pos[shipid] != N ->
+		lockid = ship_pos[shipid];
 		do
 		:: doors_status[lockid].lower == closed ->
 			request_low!true, lockid;
