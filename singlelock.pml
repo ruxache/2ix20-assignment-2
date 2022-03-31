@@ -17,23 +17,20 @@
 
 // LTL formulas to be verified
 // Formula p1 holds if the first ship can always eventually enter the lock when going up.
-//ltl p1 { []<> (ship_status[0] == go_up_in_lock) }
+//ltl p1 { []<> (ship_status[0] == go_up_in_lock) } /*  */
 
 // (d1) Always if a ship requests the lower pair of doors to open and its status is go_up, 
 // the ship will eventually be inside the lock.
-//ltl d1 { [] ((ship_status[0]  == go_up && low_req) ->  <> (ship_status[0] == go_up_in_lock)) }
+ltl d1 { [] ((ship_status[0]  == go_up && low_req) ->  <> (ship_status[0] == go_up_in_lock)) }
 
 // (d2) Always if a ship requests the higher pair of doors to open 
 // and its status is go_down, the ship will eventually be inside the lock.
-//ltl d2 { [] ((ship_status[0]  == go_down && high_req) -> <> ( ship_status[0] == go_down_in_lock)) }
+ltl d2 { [] ((ship_status[0]  == go_down && high_req) -> <> ( ship_status[0] == go_down_in_lock)) }
 
-//ltl reqlow {[]<> (low_req)}
-
-//ltl reqhigh {[]<> (high_req)}
-
-//ltl waterlow{[]<> lock_water_level == low}
-
-//ltl waterhigh{[]<> lock_water_level == high}
+ltl reqlow {[]<> (low_req)}
+ltl reqhigh {[]<> (high_req)}
+ltl waterlow{[]<> lock_water_level == low}
+ltl waterhigh{[]<> lock_water_level == high}
 
 bool low_req, high_req;
 
@@ -138,7 +135,6 @@ proctype ship(byte shipid) {
 		do
 		:: doors_status.higher == closed ->
 			request_high!true;
-			high_req = true;
 			atomic { doors_status.higher == open ->
 				if
 				:: !lock_is_occupied ->
@@ -161,7 +157,6 @@ proctype ship(byte shipid) {
 		do
 		:: doors_status.lower == closed ->
 			request_low!true;
-			low_req = true;
 			atomic { doors_status.lower == open ->
 				if
 				:: (nr_of_ships_at_pos[ship_pos[shipid]-1] < MAX
@@ -189,7 +184,6 @@ proctype ship(byte shipid) {
 		do
 		:: doors_status.lower == closed ->
 			request_low!true;
-			low_req = true;
 			atomic { doors_status.lower == open ->
 				if
 				:: !lock_is_occupied ->
@@ -212,7 +206,6 @@ proctype ship(byte shipid) {
 		do
 		:: doors_status.higher == closed ->
 			request_high!true;
-			high_req = true;
 			atomic { doors_status.higher == open ->
 				if
 				:: (nr_of_ships_at_pos[ship_pos[shipid]+1] < MAX
@@ -250,6 +243,8 @@ proctype main_control() {
 	:: request_low?true ->
 		//(b1) When the lower pair of doors is open, the higher slide is closed.
 
+		low_req = true;
+
 		if	
 		:: doors_status.lower == closed ->
 			if
@@ -275,6 +270,8 @@ proctype main_control() {
 		observed_low[0]?true;
 
 	:: request_high?true ->
+
+		high_req = true;
 
 		if
 		:: doors_status.higher == closed ->
@@ -366,19 +363,19 @@ proctype monitor() {
 	//assert(0 <= ship_pos[0] && ship_pos[0] <= N);
 
 	// (a) The lower pair of doors and the higher pair of doors are never simultaneously open.
-	assert(!(doors_status.lower == open  && doors_status.higher == open)) 
+	assert(!(doors_status.lower == open  && doors_status.higher == open)) // a :(
 
 	// (b1) When the lower pair of doors is open, the higher slide is closed.
-	assert(!(doors_status.lower == open && slide_status.higher == open)) 
+	assert(!(doors_status.lower == open && slide_status.higher == open)) // b1 :(
 	
 	// (b2) When the higher pair of doors is open, the lower slide is closed.
-	assert(!(doors_status.higher == open && slide_status.lower == open)) 
+	assert(!(doors_status.higher == open && slide_status.lower == open)) // b2 :(
 
 	// (c1) The lower pair of doors is only open when the water level in the lock is low.
-	assert(!(doors_status.lower == open && lock_water_level != low_level)) 
+	assert(!(doors_status.lower == open && lock_water_level != low_level)) //c1 :)!!
 
 	// (c2) The higher pair of doors is only open when the water level in the lock is high
-	assert(!(doors_status.higher == open && lock_water_level != high_level)) 
+	assert(!(doors_status.higher == open && lock_water_level != high_level)) //c2 :(
 
 }
 
@@ -387,7 +384,7 @@ proctype monitor() {
 init {
 	byte proc;
 	atomic {
-		//run monitor();
+		run monitor();
 		run main_control();
 		// In the code below, the individual locks are initialised.
 		// The assumption here is that N == 1. When generalising the model for
@@ -416,8 +413,6 @@ init {
 			proc++;
 		:: proc == M -> break;
 		od;
-		
-		
 		// Do not change the code below! It derives the number of ships per
 		// position from the positions of the individual ships.
 		proc = 0;
