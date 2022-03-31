@@ -20,17 +20,17 @@
 //ltl p1 { []<> (ship_status[0] == go_up_in_lock) } /*  */
 
 
-// (e1) When a request is made to open the lower doors of lock i, eventually the lower doors of lock i are open.
-// ltl e1 { [] (low_req[i] ->  <> door_status[i].lower == open) }
+// (e1) When a request is made to open the lower doors of lock i, eventually the lower doors of lock i are open//.
+//ltl e1 { [] (low_req[i] ->  <> doors_status[i].lower == open) }
 
 // (e2) When a request is made to open the higher doors of lock i, eventually the higher doors of lock i are open.
-// ltl  e2 { [] (high_req[i] ->  <> door_status[i].higher == open) }
+//ltl  e2 { [] (high_req[i] ->  <> doors_status[i].higher == open) }
 
 // (f1) Always eventually a request is made to open the higher doors of lock N − 1.
-// ltl f1 {[]<> (high_req[notlast])}
+//ltl f1 {[]<> (high_req[notlast])}
 
 // (f2) Always eventually a request is made to open the lower doors of lock 0.
-// ltl f2 {[]<> (low_req[0])}
+//ltl f2 {[]<> (low_req[0])}
 
 byte requested_lock;
 
@@ -38,7 +38,7 @@ bool low_req[N], high_req[N];
 
 byte notlast = N-1; // the position N-1. to be used for ltl formulas
 
-byte i = M - 1; // a random lock. to be sued for ltl formulas
+byte i = 2; // a random lock. to be sued for ltl formulas
 
 // Type for direction of ship.
 mtype:direction = { go_down, go_down_in_lock, go_up, go_up_in_lock, goal_reached };

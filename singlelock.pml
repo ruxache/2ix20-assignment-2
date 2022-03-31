@@ -11,7 +11,7 @@
 // The number of locks.
 #define N	1
 // The number of ships.
-#define M	5
+#define M	1
 // The maximum number of ships immediately at either side of a lock.
 #define MAX 2
 
@@ -21,19 +21,19 @@ ltl p1 { []<> (ship_status[0] == go_up_in_lock) }
 
 // (d1) Always if a ship requests the lower pair of doors to open and its status is go_up, 
 // the ship will eventually be inside the lock.
-ltl d1 { [] ((ship_status[0]  == go_up && low_req) ->  <> (ship_status[0] == go_up_in_lock)) }
+//ltl d1 { [] ((ship_status[0]  == go_up && low_req) ->  <> (ship_status[0] == go_up_in_lock)) }
 
 // (d2) Always if a ship requests the higher pair of doors to open 
 // and its status is go_down, the ship will eventually be inside the lock.
-ltl d2 { [] ((ship_status[0]  == go_down && high_req) -> <> ( ship_status[0] == go_down_in_lock)) }
+//ltl d2 { [] ((ship_status[0]  == go_down && high_req) -> <> ( ship_status[0] == go_down_in_lock)) }
 
-ltl reqlow {[]<> (low_req)}
+//ltl reqlow {[]<> (low_req)}
 
-ltl reqhigh {[]<> (high_req)}
+//ltl reqhigh {[]<> (high_req)}
 
-ltl waterlow{[]<> lock_water_level == low}
+//ltl waterlow{[]<> lock_water_level == low}
 
-ltl waterhigh{[]<> lock_water_level == high}
+//ltl waterhigh{[]<> lock_water_level == high}
 
 bool low_req, high_req;
 
