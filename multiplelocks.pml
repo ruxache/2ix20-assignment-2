@@ -9,9 +9,9 @@
 */
 
 // The number of locks.
-#define N	3
+#define N	1
 // The number of ships.
-#define M	2
+#define M	1
 // The maximum number of ships immediately at either side of a lock.
 #define MAX 2
 

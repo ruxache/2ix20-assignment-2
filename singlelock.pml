@@ -17,7 +17,7 @@
 
 // LTL formulas to be verified
 // Formula p1 holds if the first ship can always eventually enter the lock when going up.
-ltl p1 { []<> (ship_status[0] == go_up_in_lock) }
+//ltl p1 { []<> (ship_status[0] == go_up_in_lock) }
 
 // (d1) Always if a ship requests the lower pair of doors to open and its status is go_up, 
 // the ship will eventually be inside the lock.
@@ -138,6 +138,7 @@ proctype ship(byte shipid) {
 		do
 		:: doors_status.higher == closed ->
 			request_high!true;
+			high_req = true;
 			atomic { doors_status.higher == open ->
 				if
 				:: !lock_is_occupied ->
@@ -160,6 +161,7 @@ proctype ship(byte shipid) {
 		do
 		:: doors_status.lower == closed ->
 			request_low!true;
+			low_req = true;
 			atomic { doors_status.lower == open ->
 				if
 				:: (nr_of_ships_at_pos[ship_pos[shipid]-1] < MAX
@@ -187,6 +189,7 @@ proctype ship(byte shipid) {
 		do
 		:: doors_status.lower == closed ->
 			request_low!true;
+			low_req = true;
 			atomic { doors_status.lower == open ->
 				if
 				:: !lock_is_occupied ->
@@ -209,6 +212,7 @@ proctype ship(byte shipid) {
 		do
 		:: doors_status.higher == closed ->
 			request_high!true;
+			high_req = true;
 			atomic { doors_status.higher == open ->
 				if
 				:: (nr_of_ships_at_pos[ship_pos[shipid]+1] < MAX
@@ -246,8 +250,6 @@ proctype main_control() {
 	:: request_low?true ->
 		//(b1) When the lower pair of doors is open, the higher slide is closed.
 
-		low_req = true;
-
 		if	
 		:: doors_status.lower == closed ->
 			if
@@ -273,8 +275,6 @@ proctype main_control() {
 		observed_low[0]?true;
 
 	:: request_high?true ->
-
-		high_req = true;
 
 		if
 		:: doors_status.higher == closed ->
@@ -387,7 +387,7 @@ proctype monitor() {
 init {
 	byte proc;
 	atomic {
-		run monitor();
+		//run monitor();
 		run main_control();
 		// In the code below, the individual locks are initialised.
 		// The assumption here is that N == 1. When generalising the model for
