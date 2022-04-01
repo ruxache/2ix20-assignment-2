@@ -1,0 +1,40 @@
+never e1 {    /* !([] ((! (low_req[i])) || ((334==1)))) */
+T0_init:
+	do
+	:: atomic { (! (((! (low_req[i])) || ((334==1))))) -> assert(!(! (((! (low_req[i])) || ((334==1)))))) }
+	:: (1) -> goto T0_init
+	od;
+accept_all:
+	skip
+}
+never e2 {    /* !([] ((! (high_req[i])) || ((334==1)))) */
+T0_init:
+	do
+	:: atomic { (! (((! (high_req[i])) || ((334==1))))) -> assert(!(! (((! (high_req[i])) || ((334==1)))))) }
+	:: (1) -> goto T0_init
+	od;
+accept_all:
+	skip
+}
+never f1 {    /* !([] (<> (high_req[notlast]))) */
+T0_init:
+	do
+	:: (! ((high_req[notlast]))) -> goto accept_S4
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! ((high_req[notlast]))) -> goto accept_S4
+	od;
+}
+never f2 {    /* !([] (<> (low_req[0]))) */
+T0_init:
+	do
+	:: (! ((low_req[0]))) -> goto accept_S4
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! ((low_req[0]))) -> goto accept_S4
+	od;
+}

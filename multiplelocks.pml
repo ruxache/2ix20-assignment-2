@@ -1,36 +1,39 @@
-/*
-	Lock system template model for Assignment 2 of 2IX20 - Software Specification.
-	Set up for one lock and a configurable number of ships.
+	/*
+	Lock system model for Assignment 2 of 2IX20 - Software Specification.
+	Set up for a configurable number of locks and a configurable number of ships.
 
 	This file contains:
-	- process types for locks and ships that can be used as-is for the single lock case
-	- a dummy specification of the main controller
-	- initialization for the single-lock, single-ship case.
+	- process types for locks and ships that can be used as-is for the multiple lock case
+	- a main controller
+	- initialization for the multiple-lock, multiple-ship case.
 */
 
 // The number of locks.
-#define N	1
+#define N	3
 // The number of ships.
-#define M	1
+#define M	2
 // The maximum number of ships immediately at either side of a lock.
 #define MAX 2
 
 // LTL formulas to be verified
 // Formula p1 holds if the first ship can always eventually enter the lock when going up.
-//ltl p1 { []<> (ship_status[0] == go_up_in_lock) } /*  */
+//ltl p1 { []<> (ship_status[0] == go_up_in_lock) }
 
 
 // (e1) When a request is made to open the lower doors of lock i, eventually the lower doors of lock i are open//.
-//ltl e1 { [] (low_req[i] ->  <> doors_status[i].lower == open) }
+ltl e1 { [] (low_req[i] ->  <> doors_status[i].lower == open) }
 
 // (e2) When a request is made to open the higher doors of lock i, eventually the higher doors of lock i are open.
-//ltl  e2 { [] (high_req[i] ->  <> doors_status[i].higher == open) }
+ltl  e2 { [] (high_req[i] ->  <> doors_status[i].higher == open) }
 
 // (f1) Always eventually a request is made to open the higher doors of lock N − 1.
-//ltl f1 {[]<> (high_req[notlast])}
+ltl f1 {[]<> (high_req[notlast])}
 
 // (f2) Always eventually a request is made to open the lower doors of lock 0.
-//ltl f2 {[]<> (low_req[0])}
+ltl f2 {[]<> (low_req[0])}
+
+// Bonus:
+//ltl bonus{!([]<> (ship_status[0] == goal_reached && ship_status[1] == goal_reached && ship_status[2] == goal_reached))};
 
 byte requested_lock;
 
@@ -38,7 +41,7 @@ bool low_req[N], high_req[N];
 
 byte notlast = N-1; // the position N-1. to be used for ltl formulas
 
-byte i = 2; // a random lock. to be sued for ltl formulas
+byte i = 1; // a lock id to be used for ltl formulas
 
 // Type for direction of ship.
 mtype:direction = { go_down, go_down_in_lock, go_up, go_up_in_lock, goal_reached };
@@ -371,41 +374,16 @@ proctype main_control() {
 	od;
 }
 
-// proctype monitor() {
-	// an example assertion.
-	//assert(0 <= ship_pos[0] && ship_pos[0] <= N);
-
-    //(e1) When a request is made to open the lower doors of lock i, eventually the lower doors of lock i are open.
-    //(e2) When a request is made to open the higher doors of lock i, eventually the higher doors of lock i are open.
-
-	// // (a) The lower pair of doors and the higher pair of doors are never simultaneously open.
-	// assert(!(doors_status.lower == open  && doors_status.higher == open)) // a :(
-
-	// // (b1) When the lower pair of doors is open, the higher slide is closed.
-	// assert(!(doors_status.lower == open && slide_status.higher == open)) // b1 :(
-	
-	// // (b2) When the higher pair of doors is open, the lower slide is closed.
-	// assert(!(doors_status.higher == open && slide_status.lower == open)) // b2 :(
-
-	// // (c1) The lower pair of doors is only open when the water level in the lock is low.
-	// assert(!(doors_status.lower == open && lock_water_level != low_level)) //c1 :)!!
-
-	// // (c2) The higher pair of doors is only open when the water level in the lock is high
-	// assert(!(doors_status.higher == open && lock_water_level != high_level)) //c2 :(
-
-// }
 
 // Initial process that instantiates all other processes and creates
 // the initial lock and ship situation.
 init {
 	byte proc, lockid;
 	atomic {
-		//run monitor();
+
 		run main_control();
 
-		// In the code below, the individual locks are initialised.
-		// The assumption here is that N == 1. When generalising the model for
-		// multiple locks, make sure that the do-statement is altered!
+		// initialize individual locks
 		proc = 0; 
 		do
 		:: proc < N ->
@@ -420,8 +398,7 @@ init {
 		:: proc == N -> break;
 		od;
 
-		// In the code below, the individual ship positions and directions
-		// are initialised. Expand this when more ships should be added.
+		// initialize individual ships
 		proc = 0;
 		do
 		:: proc < M -> 

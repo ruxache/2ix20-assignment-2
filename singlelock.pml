@@ -1,11 +1,11 @@
 /*
-	Lock system template model for Assignment 2 of 2IX20 - Software Specification.
+	Lock system model for Assignment 2 of 2IX20 - Software Specification.
 	Set up for one lock and a configurable number of ships.
 
 	This file contains:
 	- process types for locks and ships that can be used as-is for the single lock case
-	- a dummy specification of the main controller
-	- initialization for the single-lock, single-ship case.
+	- the main controller
+	- initialization for the single-lock, multiple-ship case.
 */
 
 // The number of locks.
@@ -360,7 +360,7 @@ proctype main_control() {
 
 proctype monitor() {
 	// an example assertion.
-	//assert(0 <= ship_pos[0] && ship_pos[0] <= N);
+	assert(0 <= ship_pos[0] && ship_pos[0] <= N);
 
 	// (a) The lower pair of doors and the higher pair of doors are never simultaneously open.
 	assert(!(doors_status.lower == open  && doors_status.higher == open)) // a :(
@@ -386,9 +386,8 @@ init {
 	atomic {
 		run monitor();
 		run main_control();
-		// In the code below, the individual locks are initialised.
-		// The assumption here is that N == 1. When generalising the model for
-		// multiple locks, make sure that the do-statement is altered!
+
+		// initialize the lock
 		proc = 0;
 		do
 		:: proc < N ->
@@ -402,8 +401,8 @@ init {
 			proc++;
 		:: proc == N -> break;
 		od;
-		// In the code below, the individual ship positions and directions
-		// are initialised. Expand this when more ships should be added.
+
+		// initialize individual ships
 		proc = 0;
 		do
 		:: proc < M -> 
@@ -413,6 +412,7 @@ init {
 			proc++;
 		:: proc == M -> break;
 		od;
+		
 		// Do not change the code below! It derives the number of ships per
 		// position from the positions of the individual ships.
 		proc = 0;
